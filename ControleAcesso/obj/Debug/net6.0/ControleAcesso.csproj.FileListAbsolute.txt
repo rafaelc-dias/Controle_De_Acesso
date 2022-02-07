@@ -1,0 +1,15 @@
+C:\Users\rafae\source\repos\Begin\ControleAcesso\bin\Debug\net6.0\ControleAcesso.exe
+C:\Users\rafae\source\repos\Begin\ControleAcesso\bin\Debug\net6.0\ControleAcesso.deps.json
+C:\Users\rafae\source\repos\Begin\ControleAcesso\bin\Debug\net6.0\ControleAcesso.runtimeconfig.json
+C:\Users\rafae\source\repos\Begin\ControleAcesso\bin\Debug\net6.0\ControleAcesso.dll
+C:\Users\rafae\source\repos\Begin\ControleAcesso\bin\Debug\net6.0\ref\ControleAcesso.dll
+C:\Users\rafae\source\repos\Begin\ControleAcesso\bin\Debug\net6.0\ControleAcesso.pdb
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ControleAcesso.csproj.AssemblyReference.cache
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ControleAcesso.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ControleAcesso.AssemblyInfoInputs.cache
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ControleAcesso.AssemblyInfo.cs
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ControleAcesso.csproj.CoreCompileInputs.cache
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ControleAcesso.dll
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ref\ControleAcesso.dll
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ControleAcesso.pdb
+C:\Users\rafae\source\repos\Begin\ControleAcesso\obj\Debug\net6.0\ControleAcesso.genruntimeconfig.cache
