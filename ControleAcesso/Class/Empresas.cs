@@ -13,30 +13,28 @@ namespace ControleAcesso.Class
         
         public Empresas( )
         {
-            string emp;
+            string cnpj;
+            string nome;
 
             Console.WriteLine("Digite o CNPJ da Empresa:");
-            emp = Console.ReadLine(); 
+            cnpj = Console.ReadLine(); 
 
-           if (String.IsNullOrEmpty(emp)){
+           if (String.IsNullOrEmpty(cnpj)){
                 throw new Exception("CNPJ sem valor atribuido");
            }
-           else
-            {
-                this.Cnpj = emp;
-            }
+           
 
             Console.WriteLine("Digite o Nome da Empresa:");
-            emp = Console.ReadLine();
+            nome = Console.ReadLine();
 
-            if (String.IsNullOrEmpty(emp))
+            if (String.IsNullOrEmpty(nome))
             {
                 throw new Exception("Nome sem valor atribuido");
             }
-            else
-            {
-                this.Nome = emp;
-            }
+
+            this.Cnpj = cnpj;
+            this.Nome = nome;
+            
 
             
         }

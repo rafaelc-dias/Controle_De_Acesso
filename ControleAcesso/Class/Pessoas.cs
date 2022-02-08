@@ -13,31 +13,29 @@ namespace ControleAcesso.Class
 
         public Pessoas(string TipoPessoa)
         {
-            string pes;
+            string doc;
+            string nome;
 
             Console.WriteLine($"Digite o Documento do {TipoPessoa}:");
-            pes = Console.ReadLine();
+            doc = Console.ReadLine();
 
-            if (String.IsNullOrEmpty(pes))
+            if (String.IsNullOrEmpty(doc))
             {
                 throw new Exception("Documento sem valor atribuido");
             }
-            else
-            {
-                this.Documento = (int)Int64.Parse(pes) ;
-            }
+            
 
             Console.WriteLine($"Digite o Nome do {TipoPessoa}:");
-            pes = Console.ReadLine();
+            nome = Console.ReadLine();
 
-            if (String.IsNullOrEmpty(pes))
+            if (String.IsNullOrEmpty(nome))
             {
                 throw new Exception("Nome sem valor atribuido");
             }
-            else
-            {
-                this.Nome = pes;
-            }
+            
+            this.Documento = (int)Int64.Parse(doc);
+            this.Nome = nome;
+            
 
 
         }

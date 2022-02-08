@@ -4,7 +4,7 @@ namespace ControleAcesso.Class
     class MainClass {
         public static void Main(string[] args)
         {
-            SaidaCarroEmp func = new SaidaCarroEmp();
+            SaidaCarroEmp func = new SaidaCarroEmp("funcionario");
         }
     }
 

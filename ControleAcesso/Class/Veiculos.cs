@@ -8,62 +8,34 @@ namespace ControleAcesso.Class
 {
     public class Veiculos
     {
-        public string Placa { get; private set; }
-        public int Tipo { get; private set; }
-        public string Marca { get; private set; }
+        public string Placa { get; private set; }        
         public string Modelo { get; private  set; }
 
         public Veiculos()
         {
-            string veic;
+            string placa;
+            string modelo;
 
             Console.WriteLine("Digite a Placa do veiculo:");
-            veic = Console.ReadLine();
+            placa = Console.ReadLine();
 
-            if (String.IsNullOrEmpty(veic))
+            if (String.IsNullOrEmpty(placa))
             {
                 throw new Exception("Placa sem valor atribuido");
             }
-            else
-            {
-                this.Placa = veic;
-            }
-
-            Console.WriteLine("Digite o Tipo do veiculo:");
-            veic = Console.ReadLine();
-
-            if (String.IsNullOrEmpty(veic))
-            {
-                throw new Exception("Tipo sem valor atribuido");
-            }
-            else
-            {
-                this.Tipo = Int16.Parse(veic);
-            }
-
-            Console.WriteLine("Digite a Marca do veiculo:");
-            veic = Console.ReadLine();
-
-            if (String.IsNullOrEmpty(veic))
-            {
-                throw new Exception("Marca sem valor atribuido");
-            }
-            else
-            {
-                this.Marca = veic;
-            }
+                  
 
             Console.WriteLine("Digite a Modelo do veiculo:");
-            veic = Console.ReadLine();
+            modelo = Console.ReadLine();
 
-            if (String.IsNullOrEmpty(veic))
+            if (String.IsNullOrEmpty(modelo))
             {
                 throw new Exception("Modelo sem valor atribuido");
             }
-            else
-            {
-                this.Modelo = veic;
-            }
+            
+            this.Placa = placa;
+            this.Modelo = modelo;
+            
         }
 
     }
