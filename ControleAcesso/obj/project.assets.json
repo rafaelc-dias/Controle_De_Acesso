@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\rafae\\.nuget\\packages\\": {}
+    "C:\\Users\\rafael.dias\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rafae\\source\\repos\\Begin\\ControleAcesso\\ControleAcesso.csproj",
+      "projectUniqueName": "C:\\Teste_C\\Begin\\ControleAcesso\\ControleAcesso.csproj",
       "projectName": "ControleAcesso",
-      "projectPath": "C:\\Users\\rafae\\source\\repos\\Begin\\ControleAcesso\\ControleAcesso.csproj",
-      "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rafae\\source\\repos\\Begin\\ControleAcesso\\obj\\",
+      "projectPath": "C:\\Teste_C\\Begin\\ControleAcesso\\ControleAcesso.csproj",
+      "packagesPath": "C:\\Users\\rafael.dias\\.nuget\\packages\\",
+      "outputPath": "C:\\Teste_C\\Begin\\ControleAcesso\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rafael.dias\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
