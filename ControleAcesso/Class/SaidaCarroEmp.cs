@@ -13,7 +13,15 @@ namespace ControleAcesso.Class
         public string HoraSaida { get; private set; }
         public string Destino { get; private set; }
 
-        public SaidaCarroEmp(string tipoPessoa) : base(tipoPessoa)
+        public SaidaCarroEmp(int kmSaida, int nvCombSaida, string horaSaida, string destino, int sentido, string data, Veiculos veic, Pessoas mot, string obs) : base(sentido, data, veic, mot, obs)
+        {
+            KmSaida = kmSaida;
+            NvCombSaida = nvCombSaida;
+            HoraSaida = horaSaida;
+            Destino = destino;
+        }
+
+        /*public SaidaCarroEmp(string tipoPessoa) : base(tipoPessoa)
         {
             string kms;
             string nivcmbs;
@@ -61,11 +69,9 @@ namespace ControleAcesso.Class
             this.KmSaida = Int16.Parse(nivcmbs);
             this.HoraSaida = hrs;
             this.Destino = des;
-            
 
+        }*/
 
-
-
-        }
+       
     }
 }
