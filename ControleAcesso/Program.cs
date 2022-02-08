@@ -106,6 +106,8 @@ namespace ControleAcesso.Class
                                 break;
                             case "4":
                                 EntradaFunc ent = new EntradaFunc(Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                ent.Mostrardados();
+                                
                                 mov.Add(ent);
 
                                 break;
