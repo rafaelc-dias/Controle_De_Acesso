@@ -15,6 +15,7 @@ namespace ControleAcesso.Class
         {
             Cnpj = cnpj;
             Nome = nome;
+            var teste = 1;
         }
 
         public Empresas( )
