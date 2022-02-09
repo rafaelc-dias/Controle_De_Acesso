@@ -25,56 +25,7 @@ namespace ControleAcesso.Class
             Console.WriteLine($"Sentido = {this.Sentido} - Data = {this.Data} - Placa = {this.Veic.Placa} - Pessoa = {this.Motorista.Nome} - KM Saida = {this.KmSaida} - Nivel Comb. = {this.NvCombSaida} - Hora Saida = {this.HoraSaida} - Destino = {this.Destino}");
         }
 
-        /*public SaidaCarroEmp(string tipoPessoa) : base(tipoPessoa)
-        {
-            string kms;
-            string nivcmbs;
-            string hrs;
-            string des;
-
-            Console.WriteLine("**** REGISTRO DE MOVIMENTAÇÃO DOS CARROS DA EMPRESA ****\n");
-
-            Console.WriteLine("Digite o KM de saida:");
-            kms = Console.ReadLine();
-
-            if (String.IsNullOrEmpty(kms))
-            {
-                throw new Exception("KM de saida sem valor atribuido");
-            }
-            
-
-            Console.WriteLine("Digite o nivel de combustivel:");
-            nivcmbs = Console.ReadLine();
-
-            if (String.IsNullOrEmpty(nivcmbs))
-            {
-                throw new Exception("Nivel de combustivel sem valor atribuido");
-            }
-            
-
-            Console.WriteLine("Digite a hora da saida:");
-            hrs = Console.ReadLine();
-
-            if (String.IsNullOrEmpty(hrs))
-            {
-                throw new Exception("Hora sem valor atribuido");
-            }
-            
-
-            Console.WriteLine("Digite destino:");
-            des = Console.ReadLine();
-
-            if (String.IsNullOrEmpty(des))
-            {
-                throw new Exception("Destino sem valor atribuido");
-            }
-
-            this.KmSaida = Int32.Parse(kms);
-            this.KmSaida = Int16.Parse(nivcmbs);
-            this.HoraSaida = hrs;
-            this.Destino = des;
-
-        }*/
+        
 
 
     }
