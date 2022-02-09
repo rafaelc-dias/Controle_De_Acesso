@@ -29,71 +29,7 @@ namespace ControleAcesso.Class
             {
                 StatusPesagem = "Pesagem liberda !!!";
             }
-        }
-
-        /* public Recebimento() : base()
-         {
-             string nf;
-             string pesocgd;
-             string pesosai;
-             string pesonf;
-
-             Console.WriteLine("**** REGISTRO DE MOVIMENTAÇÃO DE RECEBIMENTO ****\n");
-
-             Console.WriteLine("Digite o numero da NF:");
-             nf = Console.ReadLine();
-
-             if (String.IsNullOrEmpty(nf))
-             {
-                 throw new Exception("KM de saida sem valor atribuido");
-             }
-
-
-             Console.WriteLine("Digite o peso de chegada do caminhao");
-             pesocgd = Console.ReadLine();
-
-             if (String.IsNullOrEmpty(pesocgd))
-             {
-                 throw new Exception("Nivel de combustivel sem valor atribuido");
-             }
-
-
-             Console.WriteLine("Digite o peso de saida do caminha:");
-             pesosai = Console.ReadLine();
-
-             if (String.IsNullOrEmpty(pesosai))
-             {
-                 throw new Exception("Hora sem valor atribuido");
-             }
-
-
-             Console.WriteLine("Digite o peda da NF:");
-             pesonf = Console.ReadLine();
-
-             if (String.IsNullOrEmpty(pesonf))
-             {
-                 throw new Exception("Destino sem valor atribuido");
-             }
-
-             this.Nf = nf;
-             this.PesoChegada = double.Parse(pesocgd);
-             this.PesoSaida = double.Parse(pesosai);
-             this.PesoNf = double.Parse(pesonf);
-         }*/
-
-        /*public void ConferePesagemRec()
-        {
-            Double peso = this.PesoChegada - this.PesoSaida;
-
-            if (peso != this.PesoNf)
-            {
-                this.StatusPesagem = "Pesagem bloqueada !!!";
-            }
-            else
-            {
-                this.StatusPesagem = "Pesagem liberda !!!";
-            }
-        }*/
+        }        
 
         public override void Mostrardados()
         {

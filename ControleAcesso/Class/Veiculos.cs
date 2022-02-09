@@ -17,11 +17,5 @@ namespace ControleAcesso.Class
             Modelo = modelo;
         }
 
-        public Veiculos()
-        {
-            
-            
-        }
-
     }
 }

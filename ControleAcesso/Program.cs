@@ -38,7 +38,7 @@ namespace ControleAcesso.Class
 
                         Console.WriteLine("\n**** Lançamento dados basicos do movimento ****\n");
 
-                        Console.WriteLine("Digite sentido (1 - Entrada/2 - Saida:");
+                        Console.WriteLine("Digite sentido (1 - Entrada/2 - Saida)");
                         sentido = Console.ReadLine();
 
                         if (String.IsNullOrEmpty(sentido))
@@ -94,7 +94,7 @@ namespace ControleAcesso.Class
 
                         Pessoas pessoas = new((int)Int64.Parse(doc), nome);
 
-                        Console.WriteLine("Escolha uma opção");
+                        Console.WriteLine("\nEscolha uma opção");
                         Console.WriteLine("1 - Recebimento / Expedição");
                         Console.WriteLine("2 - Saida Carro Empresa");
                         Console.WriteLine("3 - Entrada Funcionário");
@@ -106,7 +106,7 @@ namespace ControleAcesso.Class
                         {
                             case "1":
                                 
-                                Console.WriteLine("**** REGISTRO DE MOVIMENTAÇÃO DE RECEBIMENTO / EXPEDIÇÂO ****\n");
+                                Console.WriteLine("\n**** REGISTRO DE MOVIMENTAÇÃO DE RECEBIMENTO / EXPEDIÇÂO ****\n");
 
                                 Console.WriteLine("Digite o numero da NF:");
                                 nf = Console.ReadLine();
@@ -152,21 +152,26 @@ namespace ControleAcesso.Class
                                 {
                                     case "E":
                                         
-                                        Expedicao exp = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                        Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
                                         mov.Add(exp);
+                                        Console.WriteLine("\n**** MOVIMENTAÇÃO DE EXPEDIÇÂO REGISTRADO****");
+                                        Console.ReadKey();
                                         break;
 
                                     case "R":
-                                        Recebimento rec = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                        Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
                                         mov.Add(rec);
+                                        Console.WriteLine("\n**** MOVIMENTAÇÃO DE RECEBIMENTO REGISTRADO****");
+                                        Console.ReadKey();
                                         break;
-
                                 }                               
 
                                 break;
 
                             case "2":
-                                
+
+                                Console.WriteLine("**** REGISTRO DE MOVIMENTAÇÃO SAIDA DE CARRO DA EMPRESA ****\n");
+
                                 Console.WriteLine("Digite o KM de saida:");
                                 kms = Console.ReadLine();
 
@@ -203,18 +208,20 @@ namespace ControleAcesso.Class
                                 }
 
                                 SaidaCarroEmp sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, Int32.Parse(sentido), data, veiculos, pessoas, obs);
-
                                 mov.Add(sec);
+                                Console.WriteLine("\n**** MOVIMENTAÇÃO DE SAIDA REGISTRADO****");
+                                Console.ReadKey();
 
                                 break;
 
                             case "3":
-                                EntradaFunc ent = new(Int32.Parse(sentido), data, veiculos, pessoas, obs);
-                                ent.Mostrardados();
-                                Console.ReadKey();
 
-                                
+                                Console.WriteLine("\n**** REGISTRO DE MOVIMENTAÇÃO ENTRADA DE FUNCIONARIO ****\n");
+
+                                EntradaFunc ent = new(Int32.Parse(sentido), data, veiculos, pessoas, obs);
                                 mov.Add(ent);
+                                Console.WriteLine("\n**** MOVIMENTAÇÃO DE ENTRADA REGISTRADO****");
+                                Console.ReadKey();                                
 
                                 break;
                             case "S":
@@ -224,11 +231,13 @@ namespace ControleAcesso.Class
 
                         break;
                     case "2":
+                        Console.WriteLine("\n**** EXIBINDO MOVIMENTAÇÕES ****\n");
+
                         foreach (var ent in mov)
                         {
                             ent.Mostrardados();
                         }
-
+                       
                         Console.ReadKey();
                         break;
                     case "S":
@@ -237,13 +246,7 @@ namespace ControleAcesso.Class
                         
                 }                
 
-            }while (op);
-            
-            
-            
-            
-            
-            
+            }while (op);           
            
         }
     }

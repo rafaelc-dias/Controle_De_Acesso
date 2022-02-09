@@ -16,35 +16,5 @@ namespace ControleAcesso.Class
             Cnpj = cnpj;
             Nome = nome;            
         }
-
-        public Empresas( )
-        {
-            string cnpj;
-            string nome;
-
-            Console.WriteLine("Digite o CNPJ da Empresa:");
-            cnpj = Console.ReadLine(); 
-
-           if (String.IsNullOrEmpty(cnpj)){
-                throw new Exception("CNPJ sem valor atribuido");
-           }
-           
-
-            Console.WriteLine("Digite o Nome da Empresa:");
-            nome = Console.ReadLine();
-
-            if (String.IsNullOrEmpty(nome))
-            {
-                throw new Exception("Nome sem valor atribuido");
-            }
-
-            this.Cnpj = cnpj;
-            this.Nome = nome;
-            
-
-            
-        }
-
-
     }
 }
