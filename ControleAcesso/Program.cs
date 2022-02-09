@@ -18,6 +18,10 @@ namespace ControleAcesso.Class
             string nivcmbs;
             string hrs;
             string des;
+            string nf;
+            string pesocgd;
+            string pesosai;
+            string pesonf;
             bool op = true;
 
             do 
@@ -30,7 +34,9 @@ namespace ControleAcesso.Class
 
                 switch (opcao)
                 {
-                    case "1":                        
+                    case "1":
+
+                        Console.WriteLine("\n**** Lançamento dados basicos do movimento ****\n");
 
                         Console.WriteLine("Digite sentido (1 - Entrada/2 - Saida:");
                         sentido = Console.ReadLine();
@@ -89,10 +95,9 @@ namespace ControleAcesso.Class
                         Pessoas pessoas = new((int)Int64.Parse(doc), nome);
 
                         Console.WriteLine("Escolha uma opção");
-                        Console.WriteLine("1 - Recebimento");
-                        Console.WriteLine("2 - Expedição");
-                        Console.WriteLine("3 - Saida Carro Empresa");
-                        Console.WriteLine("4 - Entrada Funcionário");
+                        Console.WriteLine("1 - Recebimento / Expedição");
+                        Console.WriteLine("2 - Saida Carro Empresa");
+                        Console.WriteLine("3 - Entrada Funcionário");
                         Console.WriteLine("");
                         Console.WriteLine("S - Sair");
                         opcao = Console.ReadKey().KeyChar.ToString().ToUpper();
@@ -100,12 +105,68 @@ namespace ControleAcesso.Class
                         switch (opcao)
                         {
                             case "1":
+                                
+                                Console.WriteLine("**** REGISTRO DE MOVIMENTAÇÃO DE RECEBIMENTO / EXPEDIÇÂO ****\n");
+
+                                Console.WriteLine("Digite o numero da NF:");
+                                nf = Console.ReadLine();
+
+                                if (String.IsNullOrEmpty(nf))
+                                {
+                                    throw new Exception("KM de saida sem valor atribuido");
+                                }
+
+
+                                Console.WriteLine("Digite o peso de chegada do caminhao");
+                                pesocgd = Console.ReadLine();
+
+                                if (String.IsNullOrEmpty(pesocgd))
+                                {
+                                    throw new Exception("Nivel de combustivel sem valor atribuido");
+                                }
+
+
+                                Console.WriteLine("Digite o peso de saida do caminha:");
+                                pesosai = Console.ReadLine();
+
+                                if (String.IsNullOrEmpty(pesosai))
+                                {
+                                    throw new Exception("Hora sem valor atribuido");
+                                }
+
+
+                                Console.WriteLine("Digite o peda da NF:");
+                                pesonf = Console.ReadLine();
+
+                                if (String.IsNullOrEmpty(pesonf))
+                                {
+                                    throw new Exception("Destino sem valor atribuido");
+                                }
+
+                                Console.WriteLine("Escolha uma opção");
+                                Console.WriteLine("R - Recebimento");
+                                Console.WriteLine("E - Expedição");
+                                opcao = Console.ReadKey().KeyChar.ToString().ToUpper();
+
+                                switch (opcao)
+                                {
+                                    case "E":
+                                        
+                                        Expedicao exp = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                        mov.Add(exp);
+                                        break;
+
+                                    case "R":
+                                        Recebimento rec = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                        mov.Add(rec);
+                                        break;
+
+                                }                               
 
                                 break;
+
                             case "2":
-
-                                break;
-                            case "3":
+                                
                                 Console.WriteLine("Digite o KM de saida:");
                                 kms = Console.ReadLine();
 
@@ -146,7 +207,8 @@ namespace ControleAcesso.Class
                                 mov.Add(sec);
 
                                 break;
-                            case "4":
+
+                            case "3":
                                 EntradaFunc ent = new(Int32.Parse(sentido), data, veiculos, pessoas, obs);
                                 ent.Mostrardados();
                                 Console.ReadKey();
@@ -182,11 +244,7 @@ namespace ControleAcesso.Class
             
             
             
-            /*Recebimento func = new Recebimento("motorista");
-
-            func.ConferePesagemRec();
-
-            func.Mostrardados();*/
+           
         }
     }
 

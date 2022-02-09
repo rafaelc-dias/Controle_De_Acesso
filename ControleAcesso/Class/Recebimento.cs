@@ -8,10 +8,11 @@ namespace ControleAcesso.Class
 {
     public class Recebimento : Movimento
     {
-        public string Nf { get; set; }
-        public double PesoChegada { get; set; }
-        public double PesoSaida { get; set; }
-        public double PesoNf { get; set; }
+        public string Nf { get; private set; }
+        public double PesoChegada { get; private set; }
+        public double PesoSaida { get; private set; }
+        public double PesoNf { get; private set; }
+        public string StatusPesagem { get; private set; }
 
         public Recebimento(string nf, double pesoChegada, double pesoSaida, double pesoNf, int sentido, string data, Veiculos veic, Pessoas mot, string obs) : base( sentido, data ,veic,  mot,  obs)
         {
@@ -19,6 +20,15 @@ namespace ControleAcesso.Class
             PesoChegada = pesoChegada;
             PesoSaida = pesoSaida;
             PesoNf = pesoNf;
+
+            if ((PesoChegada - PesoSaida) != PesoNf)
+            {
+                StatusPesagem = "Pesagem bloqueada !!!";
+            }
+            else
+            {
+                StatusPesagem = "Pesagem liberda !!!";
+            }
         }
 
         /* public Recebimento() : base()
@@ -71,23 +81,23 @@ namespace ControleAcesso.Class
              this.PesoNf = double.Parse(pesonf);
          }*/
 
-        public void ConferePesagemRec()
+        /*public void ConferePesagemRec()
         {
             Double peso = this.PesoChegada - this.PesoSaida;
 
             if (peso != this.PesoNf)
             {
-                Console.WriteLine("Pesagem bloqueada !!!");
+                this.StatusPesagem = "Pesagem bloqueada !!!";
             }
             else
             {
-                Console.WriteLine("Pesagem liberda !!!");
+                this.StatusPesagem = "Pesagem liberda !!!";
             }
-        }
+        }*/
 
         public override void Mostrardados()
         {
-            Console.WriteLine($"Sentido = {this.Sentido} - Data = {this.Data} - Placa = {this.Veic.Placa} - Pessoa = {this.Motorista.Nome} - NF = {this.Nf} - Peso Chegada = {this.PesoChegada} - Peso Saida = {this.PesoSaida} - Peso NF = {this.PesoNf} ");
+            Console.WriteLine($"Sentido = {Sentido} - Data = {Data} - Placa = {Veic.Placa} - Pessoa = {Motorista.Nome} - NF = {Nf} - Peso Chegada = {PesoChegada} - Peso Saida = {PesoSaida} - Peso NF = {PesoNf} - Status Pesagem = {StatusPesagem}");
         }
 
     }
