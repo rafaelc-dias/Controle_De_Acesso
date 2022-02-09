@@ -20,6 +20,11 @@ namespace ControleAcesso.Class
         public EntradaFunc(int sentido, string data, Veiculos veic, Pessoas motorista, string obs) : base(sentido, data, veic, motorista, obs)
         {
         }
+
+        public override void Mostrardados()
+        {
+            Console.WriteLine($"Sentido = {this.Sentido} - Data = {this.Data} - Placa = {this.Veic.Placa} - Pessoa = {this.Motorista.Nome}");
+        }
     }
 
 }

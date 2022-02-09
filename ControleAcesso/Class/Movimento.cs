@@ -23,6 +23,9 @@ namespace ControleAcesso.Class
             Obs = obs;
         }
 
-       
+        public abstract void Mostrardados();
+        
+
+
     }
 }

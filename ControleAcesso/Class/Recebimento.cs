@@ -85,7 +85,7 @@ namespace ControleAcesso.Class
             }
         }
 
-        public void Mostrardados()
+        public override void Mostrardados()
         {
             Console.WriteLine($"Sentido = {this.Sentido} - Data = {this.Data} - Placa = {this.Veic.Placa} - Pessoa = {this.Motorista.Nome} - NF = {this.Nf} - Peso Chegada = {this.PesoChegada} - Peso Saida = {this.PesoSaida} - Peso NF = {this.PesoNf} ");
         }
