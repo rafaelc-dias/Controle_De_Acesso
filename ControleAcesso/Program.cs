@@ -27,6 +27,8 @@ namespace ControleAcesso.Class
             do 
             {
                 Console.Clear();
+                Console.WriteLine("**** Lançamentos do Controle de Acesso ****\n");
+                Console.WriteLine("**** Selecione uma opção para iniciar ****\n");
                 Console.WriteLine("1 - Lançar um novo movimento");
                 Console.WriteLine("2 - Listar Movimentos");
                 Console.WriteLine("S - Sair");
@@ -164,6 +166,11 @@ namespace ControleAcesso.Class
                                         Console.WriteLine("\n**** MOVIMENTAÇÃO DE RECEBIMENTO REGISTRADO****");
                                         Console.ReadKey();
                                         break;
+
+                                    default:
+                                        Console.WriteLine("\n**** NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA****");
+                                        Console.ReadKey();
+                                        break;
                                 }                               
 
                                 break;
@@ -227,6 +234,10 @@ namespace ControleAcesso.Class
                             case "S":
 
                                 break;
+                            default:
+                                Console.WriteLine("\n**** NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA****");
+                                Console.ReadKey();
+                                break;
                         }
 
                         break;
@@ -241,9 +252,15 @@ namespace ControleAcesso.Class
                         Console.ReadKey();
                         break;
                     case "S":
+
                         op = false;
                         break;
-                        
+
+                    default:
+                        Console.WriteLine("\n**** NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA****");
+                        Console.ReadKey();
+                        break;
+
                 }                
 
             }while (op);           
