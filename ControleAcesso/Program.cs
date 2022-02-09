@@ -3,7 +3,7 @@ namespace ControleAcesso.Class
 {
     class MainClass {
 
-        private static List<Movimento> mov = new List<Movimento>();
+        private static List<Movimento> mov = new();
         public static void Main(string[] args)
         {
             string opcao = "S";
@@ -14,6 +14,10 @@ namespace ControleAcesso.Class
             string modelo;
             string doc;
             string nome;
+            string kms;
+            string nivcmbs;
+            string hrs;
+            string des;
             bool op = true;
 
             do 
@@ -80,15 +84,15 @@ namespace ControleAcesso.Class
                             throw new Exception("Nome sem valor atribuido");
                         }
 
-                        Veiculos veiculos = new Veiculos(placa,modelo);
+                        Veiculos veiculos = new(placa,modelo);
 
-                        Pessoas pessoas = new Pessoas((int)Int64.Parse(doc), nome);
+                        Pessoas pessoas = new((int)Int64.Parse(doc), nome);
 
                         Console.WriteLine("Escolha uma opção");
                         Console.WriteLine("1 - Recebimento");
                         Console.WriteLine("2 - Expedição");
-                        Console.WriteLine("3 - Entrada Funcionário");
-                        Console.WriteLine("4 - Saida Carro Empresa");
+                        Console.WriteLine("3 - Saida Carro Empresa");
+                        Console.WriteLine("4 - Entrada Funcionário");
                         Console.WriteLine("");
                         Console.WriteLine("S - Sair");
                         opcao = Console.ReadKey().KeyChar.ToString().ToUpper();
@@ -102,11 +106,51 @@ namespace ControleAcesso.Class
 
                                 break;
                             case "3":
+                                Console.WriteLine("Digite o KM de saida:");
+                                kms = Console.ReadLine();
+
+                                if (String.IsNullOrEmpty(kms))
+                                {
+                                    throw new Exception("KM de saida sem valor atribuido");
+                                }
+
+
+                                Console.WriteLine("Digite o nivel de combustivel:");
+                                nivcmbs = Console.ReadLine();
+
+                                if (String.IsNullOrEmpty(nivcmbs))
+                                {
+                                    throw new Exception("Nivel de combustivel sem valor atribuido");
+                                }
+
+
+                                Console.WriteLine("Digite a hora da saida:");
+                                hrs = Console.ReadLine();
+
+                                if (String.IsNullOrEmpty(hrs))
+                                {
+                                    throw new Exception("Hora sem valor atribuido");
+                                }
+
+
+                                Console.WriteLine("Digite destino:");
+                                des = Console.ReadLine();
+
+                                if (String.IsNullOrEmpty(des))
+                                {
+                                    throw new Exception("Destino sem valor atribuido");
+                                }
+
+                                SaidaCarroEmp sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, Int32.Parse(sentido), data, veiculos, pessoas, obs);
+
+                                mov.Add(sec);
 
                                 break;
                             case "4":
-                                EntradaFunc ent = new EntradaFunc(Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                EntradaFunc ent = new(Int32.Parse(sentido), data, veiculos, pessoas, obs);
                                 ent.Mostrardados();
+                                Console.ReadKey();
+
                                 
                                 mov.Add(ent);
 
@@ -118,6 +162,12 @@ namespace ControleAcesso.Class
 
                         break;
                     case "2":
+                        foreach (var ent in mov)
+                        {
+                            ent.Mostrardados();
+                        }
+
+                        Console.ReadKey();
                         break;
                     case "S":
                         op = false;

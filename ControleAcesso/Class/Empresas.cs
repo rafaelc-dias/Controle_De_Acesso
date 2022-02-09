@@ -14,8 +14,7 @@ namespace ControleAcesso.Class
         public Empresas(string cnpj, string nome)
         {
             Cnpj = cnpj;
-            Nome = nome;
-            var teste = 1;
+            Nome = nome;            
         }
 
         public Empresas( )

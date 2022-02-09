@@ -17,12 +17,6 @@ namespace ControleAcesso.Class
             Nome = nome;
         }
 
-        public Pessoas(string TipoPessoa)
-        {
-            
-            
-
-
-        }
+        
     }
 }
