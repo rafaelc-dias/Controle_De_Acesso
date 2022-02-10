@@ -13,6 +13,7 @@ namespace ControleAcesso.Class
         public Veiculos Veic { get; private set; }
         public Pessoas Motorista { get; private set; }
         public string Obs { get; private set; }
+        public string[] Sent { get; private set; }
 
         protected Movimento(int sentido, string data, Veiculos veic, Pessoas motorista, string obs)
         {
@@ -21,6 +22,10 @@ namespace ControleAcesso.Class
             Veic = veic;
             Motorista = motorista;
             Obs = obs;
+
+            Sent = new string[2];
+            Sent[0] = "Entrada";
+            Sent[1] = "Saida";
         }
 
         public abstract void Mostrardados();

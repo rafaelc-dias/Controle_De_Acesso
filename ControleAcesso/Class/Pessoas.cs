@@ -8,10 +8,10 @@ namespace ControleAcesso.Class
 {
     public class Pessoas
     {
-        public int Documento { get; private set; }
+        public string Documento { get; private set; }
         public string Nome  { get; private set; }
 
-        public Pessoas(int documento, string nome)
+        public Pessoas(string documento, string nome)
         {
             Documento = documento;
             Nome = nome;

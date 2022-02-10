@@ -40,61 +40,35 @@ namespace ControleAcesso.Class
 
                         Console.WriteLine("\n**** Lançamento dados basicos do movimento ****\n");
 
-                        Console.WriteLine("Digite sentido (1 - Entrada/2 - Saida)");
-                        sentido = Console.ReadLine();
-
-                        if (String.IsNullOrEmpty(sentido))
-                        {
-                            throw new Exception("Sentido sem valor atribuido");
-                        }
+                        Console.WriteLine("Digite a data:");
+                        data = Console.ReadLine();
 
                         Console.WriteLine("Digite a data:");
                         data = Console.ReadLine();
 
-                        if (String.IsNullOrEmpty(data))
-                        {
-                            throw new Exception("Data sem valor atribuido");
-                        }
                         Console.WriteLine("Digite uma observacao:");
                         obs = Console.ReadLine();
 
                         Console.WriteLine("Digite a Placa do veiculo:");
                         placa = Console.ReadLine();
 
-                        if (String.IsNullOrEmpty(placa))
-                        {
-                            throw new Exception("Placa sem valor atribuido");
-                        }
-
-
                         Console.WriteLine("Digite a Modelo do veiculo:");
                         modelo = Console.ReadLine();
-
-                        if (String.IsNullOrEmpty(modelo))
-                        {
-                            throw new Exception("Modelo sem valor atribuido");
-                        }                        
 
                         Console.WriteLine("Digite o Documento da pessoa:");
                         doc = Console.ReadLine();
 
-                        if (String.IsNullOrEmpty(doc))
-                        {
-                            throw new Exception("Documento sem valor atribuido");
-                        }
-
-
                         Console.WriteLine("Digite o Nome da pessoa");
                         nome = Console.ReadLine();
 
-                        if (String.IsNullOrEmpty(nome))
-                        {
-                            throw new Exception("Nome sem valor atribuido");
-                        }
+                        Validacao validacao = new();
 
+                        validacao.ValidaDadosMov(sentido,data,placa,doc,nome)
+
+                        
                         Veiculos veiculos = new(placa,modelo);
 
-                        Pessoas pessoas = new((int)Int64.Parse(doc), nome);
+                        Pessoas pessoas = new(doc, nome);
 
                         Console.WriteLine("\nEscolha uma opção");
                         Console.WriteLine("1 - Recebimento / Expedição");
@@ -226,6 +200,7 @@ namespace ControleAcesso.Class
                                 Console.WriteLine("\n**** REGISTRO DE MOVIMENTAÇÃO ENTRADA DE FUNCIONARIO ****\n");
 
                                 EntradaFunc ent = new(Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                Console.WriteLine(ent.Sent.GetValue(0));
                                 mov.Add(ent);
                                 Console.WriteLine("\n**** MOVIMENTAÇÃO DE ENTRADA REGISTRADO****");
                                 Console.ReadKey();                                
