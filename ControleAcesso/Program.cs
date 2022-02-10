@@ -4,8 +4,21 @@ namespace ControleAcesso.Class
     class MainClass {
 
         private static List<Movimento> mov = new();
+        public static void Continuar(string msg)
+        {
+            Console.WriteLine($"\n**** {msg} ****");
+            Console.WriteLine("");
+            Console.WriteLine("\n**** PRESSIONE QUALQUER TECLA PARA CONTINUAR ****");
+            Console.ReadKey();
+
+        }
+
         public static void Main(string[] args)
         {
+            Veiculos veiculos;
+            Pessoas pessoas;
+
+
             string opcao = "S";
             string sentido;
             string data;
@@ -22,6 +35,8 @@ namespace ControleAcesso.Class
             string pesocgd;
             string pesosai;
             string pesonf;
+            string msg;
+
             bool op = true;
 
             do 
@@ -40,35 +55,43 @@ namespace ControleAcesso.Class
 
                         Console.WriteLine("\n**** Lançamento dados basicos do movimento ****\n");
 
-                        Console.WriteLine("Digite a data:");
-                        data = Console.ReadLine();
+                        Console.WriteLine("Digite sentido (1 - Entrada/2 - Saida):");
+                        sentido = Console.ReadLine();
 
-                        Console.WriteLine("Digite a data:");
+                        Console.WriteLine("Digite a data (Formato DD/MM/AAAA - Obrigatorio):");
                         data = Console.ReadLine();
 
                         Console.WriteLine("Digite uma observacao:");
                         obs = Console.ReadLine();
 
-                        Console.WriteLine("Digite a Placa do veiculo:");
+                        Console.WriteLine("Digite a Placa do veiculo (7 digitos -  Obrigatorio):");
                         placa = Console.ReadLine();
 
                         Console.WriteLine("Digite a Modelo do veiculo:");
                         modelo = Console.ReadLine();
 
-                        Console.WriteLine("Digite o Documento da pessoa:");
+                        Console.WriteLine("Digite o Documento da pessoa (11 digitos -  Obrigatorio):");
                         doc = Console.ReadLine();
 
-                        Console.WriteLine("Digite o Nome da pessoa");
+                        Console.WriteLine("Digite o Nome da pessoa (Obrigatorio)");
                         nome = Console.ReadLine();
 
                         Validacao validacao = new();
 
-                        validacao.ValidaDadosMov(sentido,data,placa,doc,nome)
+                        msg = validacao.ValidaDadosMov(sentido, data, placa, doc, nome);
 
-                        
-                        Veiculos veiculos = new(placa,modelo);
+                        if(msg == "") 
+                        {
+                            veiculos = new(placa, modelo);
 
-                        Pessoas pessoas = new(doc, nome);
+                            pessoas = new(doc, nome);
+                        }
+                        else
+                        {
+                            Continuar(msg);
+                            break;
+
+                        }
 
                         Console.WriteLine("\nEscolha uma opção");
                         Console.WriteLine("1 - Recebimento / Expedição");
@@ -84,68 +107,51 @@ namespace ControleAcesso.Class
                                 
                                 Console.WriteLine("\n**** REGISTRO DE MOVIMENTAÇÃO DE RECEBIMENTO / EXPEDIÇÂO ****\n");
 
-                                Console.WriteLine("Digite o numero da NF:");
+                                Console.WriteLine("Digite o numero da NF (Numerico -  Obrigatorio):");
                                 nf = Console.ReadLine();
 
-                                if (String.IsNullOrEmpty(nf))
-                                {
-                                    throw new Exception("KM de saida sem valor atribuido");
-                                }
-
-
-                                Console.WriteLine("Digite o peso de chegada do caminhao");
+                                Console.WriteLine("Digite o peso de chegada do caminhao (Numerico -  Obrigatorio):");
                                 pesocgd = Console.ReadLine();
 
-                                if (String.IsNullOrEmpty(pesocgd))
-                                {
-                                    throw new Exception("Nivel de combustivel sem valor atribuido");
-                                }
-
-
-                                Console.WriteLine("Digite o peso de saida do caminha:");
+                                Console.WriteLine("Digite o peso de saida do caminhao (Numerico -  Obrigatorio):");
                                 pesosai = Console.ReadLine();
 
-                                if (String.IsNullOrEmpty(pesosai))
-                                {
-                                    throw new Exception("Hora sem valor atribuido");
-                                }
-
-
-                                Console.WriteLine("Digite o peda da NF:");
+                                Console.WriteLine("Digite o peso da NF (Numerico -  Obrigatorio):");
                                 pesonf = Console.ReadLine();
 
-                                if (String.IsNullOrEmpty(pesonf))
-                                {
-                                    throw new Exception("Destino sem valor atribuido");
+                                msg = validacao.ValidaDadosPesoNf(nf, pesocgd, pesosai, pesonf);
+
+                                if(msg == "")
+                                { 
+
+                                    Console.WriteLine("Escolha uma opção");
+                                    Console.WriteLine("R - Recebimento");
+                                    Console.WriteLine("E - Expedição");
+                                    opcao = Console.ReadKey().KeyChar.ToString().ToUpper();
+
+                                    switch (opcao)
+                                    {
+                                        case "E":
+                                            Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                            mov.Add(exp);
+                                            Continuar("MOVIMENTAÇÃO DE EXPEDIÇÂO REGISTRADA");
+                                            break;
+
+                                        case "R":
+                                            Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                            mov.Add(rec);
+                                            Continuar("MOVIMENTAÇÃO DE RECEBIMENTO REGISTRADA");
+                                            break;
+
+                                        default:
+                                            Continuar("NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA");
+                                            break;
+                                    }
                                 }
-
-                                Console.WriteLine("Escolha uma opção");
-                                Console.WriteLine("R - Recebimento");
-                                Console.WriteLine("E - Expedição");
-                                opcao = Console.ReadKey().KeyChar.ToString().ToUpper();
-
-                                switch (opcao)
+                                else
                                 {
-                                    case "E":
-                                        
-                                        Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
-                                        mov.Add(exp);
-                                        Console.WriteLine("\n**** MOVIMENTAÇÃO DE EXPEDIÇÂO REGISTRADO****");
-                                        Console.ReadKey();
-                                        break;
-
-                                    case "R":
-                                        Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
-                                        mov.Add(rec);
-                                        Console.WriteLine("\n**** MOVIMENTAÇÃO DE RECEBIMENTO REGISTRADO****");
-                                        Console.ReadKey();
-                                        break;
-
-                                    default:
-                                        Console.WriteLine("\n**** NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA****");
-                                        Console.ReadKey();
-                                        break;
-                                }                               
+                                    Continuar(msg);
+                                }
 
                                 break;
 
@@ -153,65 +159,45 @@ namespace ControleAcesso.Class
 
                                 Console.WriteLine("**** REGISTRO DE MOVIMENTAÇÃO SAIDA DE CARRO DA EMPRESA ****\n");
 
-                                Console.WriteLine("Digite o KM de saida:");
+                                Console.WriteLine("Digite o KM de saida (Numerico -  Obrigatorio):");
                                 kms = Console.ReadLine();
 
-                                if (String.IsNullOrEmpty(kms))
-                                {
-                                    throw new Exception("KM de saida sem valor atribuido");
-                                }
-
-
-                                Console.WriteLine("Digite o nivel de combustivel:");
+                                Console.WriteLine("Digite o nivel de combustivel (Numerico -  Obrigatorio):");
                                 nivcmbs = Console.ReadLine();
 
-                                if (String.IsNullOrEmpty(nivcmbs))
-                                {
-                                    throw new Exception("Nivel de combustivel sem valor atribuido");
-                                }
-
-
-                                Console.WriteLine("Digite a hora da saida:");
+                                Console.WriteLine("Digite a hora da saida (Formato HH:MM -  Obrigatorio):");
                                 hrs = Console.ReadLine();
 
-                                if (String.IsNullOrEmpty(hrs))
-                                {
-                                    throw new Exception("Hora sem valor atribuido");
-                                }
-
-
-                                Console.WriteLine("Digite destino:");
+                                Console.WriteLine("Digite destino (Obrigatorio):");
                                 des = Console.ReadLine();
 
-                                if (String.IsNullOrEmpty(des))
+                                msg = validacao.ValidaDadosSaidaCarroEmp(kms, nivcmbs, hrs, des);
+
+                                if(msg == "")
                                 {
-                                    throw new Exception("Destino sem valor atribuido");
+                                    SaidaCarroEmp sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                    mov.Add(sec);
+                                    Continuar("MOVIMENTAÇÃO DE SAIDA REGISTRADA");                                 
+
                                 }
-
-                                SaidaCarroEmp sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, Int32.Parse(sentido), data, veiculos, pessoas, obs);
-                                mov.Add(sec);
-                                Console.WriteLine("\n**** MOVIMENTAÇÃO DE SAIDA REGISTRADO****");
-                                Console.ReadKey();
-
+                                else
+                                {
+                                    Continuar(msg);
+                                }
                                 break;
+
 
                             case "3":
 
-                                Console.WriteLine("\n**** REGISTRO DE MOVIMENTAÇÃO ENTRADA DE FUNCIONARIO ****\n");
-
                                 EntradaFunc ent = new(Int32.Parse(sentido), data, veiculos, pessoas, obs);
-                                Console.WriteLine(ent.Sent.GetValue(0));
                                 mov.Add(ent);
-                                Console.WriteLine("\n**** MOVIMENTAÇÃO DE ENTRADA REGISTRADO****");
-                                Console.ReadKey();                                
-
+                                Continuar("MOVIMENTAÇÃO DE ENTRADA DE FUNCIONARIO REGISTRADA");
                                 break;
                             case "S":
 
                                 break;
                             default:
-                                Console.WriteLine("\n**** NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA****");
-                                Console.ReadKey();
+                                Continuar("NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA");
                                 break;
                         }
 
@@ -223,7 +209,8 @@ namespace ControleAcesso.Class
                         {
                             ent.Mostrardados();
                         }
-                       
+
+                        Console.WriteLine("\n**** PRESSIONE QUALQUER TECLA PARA CONTINUAR ****");
                         Console.ReadKey();
                         break;
                     case "S":
@@ -232,8 +219,7 @@ namespace ControleAcesso.Class
                         break;
 
                     default:
-                        Console.WriteLine("\n**** NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA****");
-                        Console.ReadKey();
+                        Continuar("NÃO FOI DIGITADO UMA OPÇÃO VALIDA, NENHUMA AÇÃO FOI EFETUADA");
                         break;
 
                 }                
