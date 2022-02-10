@@ -22,7 +22,7 @@ namespace ControleAcesso.Class
         }
         public override void Mostrardados()
         {
-            Console.WriteLine($"Sentido = {this.Sentido} - Data = {this.Data} - Placa = {this.Veic.Placa} - Pessoa = {this.Motorista.Nome} - KM Saida = {this.KmSaida} - Nivel Comb. = {this.NvCombSaida} - Hora Saida = {this.HoraSaida} - Destino = {this.Destino}");
+            Console.WriteLine($"Sentido =  {Sent.GetValue(Sentido - 1)} - Data = {Data} - Placa = {Veic.Placa} - Pessoa = {Motorista.Nome} - KM Saida = {KmSaida} - Nivel Comb. = {NvCombSaida} - Hora Saida = {HoraSaida} - Destino = {Destino}");
         }
 
         

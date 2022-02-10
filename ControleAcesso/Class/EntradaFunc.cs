@@ -15,7 +15,7 @@ namespace ControleAcesso.Class
 
         public override void Mostrardados()
         {
-            Console.WriteLine($"Sentido = {this.Sentido} - Data = {this.Data} - Placa = {this.Veic.Placa} - Pessoa = {this.Motorista.Nome}");
+            Console.WriteLine($"Sentido = {Sent.GetValue(Sentido - 1)} - Data = {Data} - Placa = {Veic.Placa} - Pessoa = {Motorista.Nome}");
         }
     }
 
