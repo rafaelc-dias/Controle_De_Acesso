@@ -21,6 +21,7 @@ namespace ControleAcesso.Class
 
             string opcao = "S";
             string sentido;
+            ESentido esentido;
             string data;
             string obs;
             string placa;
@@ -175,7 +176,7 @@ namespace ControleAcesso.Class
 
                                 if(msg == "")
                                 {
-                                    SaidaCarroEmpresa sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, Enum.Parse(ESentido,sentido), data, veiculos, pessoas, obs);
+                                    SaidaCarroEmpresa sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, esentido., data, veiculos, pessoas, obs);
                                     mov.Add(sec);
                                     Continuar("MOVIMENTAÇÃO DE SAIDA REGISTRADA");                                 
 
