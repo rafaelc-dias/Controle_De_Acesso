@@ -8,7 +8,7 @@ namespace ControleAcesso.Class
 {
     public class Validacao
     {
-        public string ValidaDadosMov(string sentido,string data, string placa, string doc,string nome)
+        public string ValidaDadosMovimento(string sentido,string data, string placa, string doc,string nome)
         {
             string msg = "";
 
@@ -65,7 +65,7 @@ namespace ControleAcesso.Class
 
         }
 
-        public string ValidaDadosSaidaCarroEmp(string kms, string nivcmbs, string hrs, string destino)
+        public string ValidaDadosSaidaCarroEmpresa(string kms, string nivcmbs, string hrs, string destino)
         {
             string msg = "";
 

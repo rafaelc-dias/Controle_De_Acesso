@@ -14,7 +14,7 @@ namespace ControleAcesso.Class
         public double PesoNf { get; private set; }
         public string StatusPesagem { get; private set; }
 
-        public Recebimento(string nf, double pesoChegada, double pesoSaida, double pesoNf, int sentido, string data, Veiculos veic, Pessoas mot, string obs) : base( sentido, data ,veic,  mot,  obs)
+        public Recebimento(string nf, double pesoChegada, double pesoSaida, double pesoNf, string ESentido, string data, Veiculos veiculo, Pessoas motorista, string obs) : base( sentido, data , veiculo, motorista,  obs)
         {
             Nf = nf;
             PesoChegada = pesoChegada;
@@ -33,7 +33,7 @@ namespace ControleAcesso.Class
 
         public override void Mostrardados()
         {
-            Console.WriteLine($"Sentido =  {Sent.GetValue(Sentido - 1)} - Data = {Data} - Placa = {Veic.Placa} - Pessoa = {Motorista.Nome} - NF = {Nf} - Peso Chegada = {PesoChegada} - Peso Saida = {PesoSaida} - Peso NF = {PesoNf} - Status Pesagem = {StatusPesagem}");
+            Console.WriteLine($"Sentido =  {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome} - NF = {Nf} - Peso Chegada = {PesoChegada} - Peso Saida = {PesoSaida} - Peso NF = {PesoNf} - Status Pesagem = {StatusPesagem}");
         }
 
     }
