@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControleAcesso.Class
 {
-    internal class Empresas
+    public class Empresas
     {
         public string Cnpj { get; private set; }
         public string Nome { get; private set; }

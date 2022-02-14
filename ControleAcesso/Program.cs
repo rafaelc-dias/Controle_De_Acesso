@@ -21,6 +21,7 @@ namespace ControleAcesso.Class
 
             string opcao = "S";
             string sentido;
+            ESentido esentido;
             string data;
             string obs;
             string placa;
@@ -78,13 +79,22 @@ namespace ControleAcesso.Class
 
                         Validacao validacao = new();
 
-                        msg = validacao.ValidaDadosMov(sentido, data, placa, doc, nome);
+                        msg = validacao.ValidaDadosMovimento(sentido, data, placa, doc, nome);
 
                         if(msg == "") 
                         {
                             veiculos = new(placa, modelo);
 
                             pessoas = new(doc, nome);
+
+                            if(sentido == "1")
+                            {
+                                esentido = ESentido.ENTRADA;
+                            }
+                            else
+                            {
+                                esentido = ESentido.SAIDA;
+                            }
                         }
                         else
                         {
@@ -132,13 +142,13 @@ namespace ControleAcesso.Class
                                     switch (opcao)
                                     {
                                         case "E":
-                                            Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                            Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), esentido, data, veiculos, pessoas, obs);
                                             mov.Add(exp);
                                             Continuar("MOVIMENTAÇÃO DE EXPEDIÇÂO REGISTRADA");
                                             break;
 
                                         case "R":
-                                            Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                            Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), esentido, data, veiculos, pessoas, obs);
                                             mov.Add(rec);
                                             Continuar("MOVIMENTAÇÃO DE RECEBIMENTO REGISTRADA");
                                             break;
@@ -171,11 +181,11 @@ namespace ControleAcesso.Class
                                 Console.WriteLine("Digite destino (Obrigatorio):");
                                 des = Console.ReadLine();
 
-                                msg = validacao.ValidaDadosSaidaCarroEmp(kms, nivcmbs, hrs, des);
+                                msg = validacao.ValidaDadosSaidaCarroEmpresa(kms, nivcmbs, hrs, des);
 
                                 if(msg == "")
                                 {
-                                    SaidaCarroEmp sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                    SaidaCarroEmpresa sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, esentido, data, veiculos, pessoas, obs);
                                     mov.Add(sec);
                                     Continuar("MOVIMENTAÇÃO DE SAIDA REGISTRADA");                                 
 
@@ -189,7 +199,7 @@ namespace ControleAcesso.Class
 
                             case "3":
 
-                                EntradaFunc ent = new(Int32.Parse(sentido), data, veiculos, pessoas, obs);
+                                EntradaFuncionarios ent = new(ESentido.ENTRADA, data, veiculos, pessoas, obs);
                                 mov.Add(ent);
                                 Continuar("MOVIMENTAÇÃO DE ENTRADA DE FUNCIONARIO REGISTRADA");
                                 break;

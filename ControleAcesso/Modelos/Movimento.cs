@@ -8,24 +8,21 @@ namespace ControleAcesso.Class
 {
     abstract public class Movimento
     {
-        public int Sentido { get; private set; }
+        public ESentido Sentido { get; private set; }
         public string Data { get; private set; }
-        public Veiculos Veic { get; private set; }
+        public Veiculos Veiculo { get; private set; }
         public Pessoas Motorista { get; private set; }
-        public string Obs { get; private set; }
-        public string[] Sent { get; private set; }
+        public string Observacao { get; private set; }       
 
-        protected Movimento(int sentido, string data, Veiculos veic, Pessoas motorista, string obs)
+        protected Movimento(ESentido sentido, string data, Veiculos veiculo, Pessoas motorista, string observacao)
         {
             Sentido = sentido;
             Data = data;
-            Veic = veic;
+            Veiculo = veiculo;
             Motorista = motorista;
-            Obs = obs;
+            Observacao = observacao;
 
-            Sent = new string[2];
-            Sent[0] = "Entrada";
-            Sent[1] = "Saida";
+           
         }
 
         public abstract void Mostrardados();
