@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicacao", "Aplicacao", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleAcesso.Domain", "ControleAcesso\ControleAcesso.Domain.csproj", "{AF657985-1C73-4A80-849B-2794033F8EDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiControleAcesso", "ApiControleAcesso\ApiControleAcesso.csproj", "{BE15179B-C7E0-478C-97B8-4370A88B21FC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,17 +19,12 @@ Global
 		{AF657985-1C73-4A80-849B-2794033F8EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF657985-1C73-4A80-849B-2794033F8EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF657985-1C73-4A80-849B-2794033F8EDF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE15179B-C7E0-478C-97B8-4370A88B21FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE15179B-C7E0-478C-97B8-4370A88B21FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE15179B-C7E0-478C-97B8-4370A88B21FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE15179B-C7E0-478C-97B8-4370A88B21FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AF657985-1C73-4A80-849B-2794033F8EDF} = {68EA9CFC-482B-4FFF-A44F-60E03A4E46B3}
-		{BE15179B-C7E0-478C-97B8-4370A88B21FC} = {7B3D8221-B1B3-4E0B-A79D-3D1077845D95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DA3BB22-8B8F-4C49-B880-85D3403DFDA4}
