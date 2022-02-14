@@ -86,6 +86,15 @@ namespace ControleAcesso.Class
                             veiculos = new(placa, modelo);
 
                             pessoas = new(doc, nome);
+
+                            if(sentido == "1")
+                            {
+                                esentido = ESentido.ENTRADA;
+                            }
+                            else
+                            {
+                                esentido = ESentido.SAIDA;
+                            }
                         }
                         else
                         {
@@ -133,13 +142,13 @@ namespace ControleAcesso.Class
                                     switch (opcao)
                                     {
                                         case "E":
-                                            Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), ESentido.ENTRADA, data, veiculos, pessoas, obs);
+                                            Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), esentido, data, veiculos, pessoas, obs);
                                             mov.Add(exp);
                                             Continuar("MOVIMENTAÇÃO DE EXPEDIÇÂO REGISTRADA");
                                             break;
 
                                         case "R":
-                                            Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), ESentido.SAIDA, data, veiculos, pessoas, obs);
+                                            Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), esentido, data, veiculos, pessoas, obs);
                                             mov.Add(rec);
                                             Continuar("MOVIMENTAÇÃO DE RECEBIMENTO REGISTRADA");
                                             break;
@@ -176,7 +185,7 @@ namespace ControleAcesso.Class
 
                                 if(msg == "")
                                 {
-                                    SaidaCarroEmpresa sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, esentido., data, veiculos, pessoas, obs);
+                                    SaidaCarroEmpresa sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, esentido, data, veiculos, pessoas, obs);
                                     mov.Add(sec);
                                     Continuar("MOVIMENTAÇÃO DE SAIDA REGISTRADA");                                 
 
