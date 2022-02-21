@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControleAcesso.Class
 {
-    abstract public class Movimento
+     public class Movimento
     {
         public ESentido Sentido { get; private set; }
         public string Data { get; private set; }
@@ -14,7 +14,7 @@ namespace ControleAcesso.Class
         public Pessoas Motorista { get; private set; }
         public string Observacao { get; private set; }       
 
-        protected Movimento(ESentido sentido, string data, Veiculos veiculo, Pessoas motorista, string observacao)
+        public Movimento(ESentido sentido, string data, Veiculos veiculo, Pessoas motorista, string observacao)
         {
             Sentido = sentido;
             Data = data;
@@ -25,7 +25,10 @@ namespace ControleAcesso.Class
            
         }
 
-        public abstract void Mostrardados();
+        public void Mostrardados()
+        {
+            Console.WriteLine($"Sentido = {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome}");
+        }
         
 
 

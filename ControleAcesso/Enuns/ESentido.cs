@@ -3,7 +3,7 @@
     public enum ESentido
     {
         ENTRADA = 1,
-        SAIDA
+        SAIDA = 2
         
     }
 }

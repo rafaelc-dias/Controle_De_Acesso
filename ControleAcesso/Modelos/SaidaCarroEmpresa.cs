@@ -20,7 +20,7 @@ namespace ControleAcesso.Class
             HoraSaida = horaSaida;
             Destino = destino;
         }
-        public override void Mostrardados()
+        public void Mostrardados()
         {
             Console.WriteLine($"Sentido =  {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome} - KM Saida = {KmSaida} - Nivel Comb. = {NivelCombustivelSaida} - Hora Saida = {HoraSaida} - Destino = {Destino}");
         }

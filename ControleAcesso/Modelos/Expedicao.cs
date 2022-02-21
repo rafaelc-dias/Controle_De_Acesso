@@ -13,7 +13,7 @@ namespace ControleAcesso.Class
         {
         }
 
-        public override void Mostrardados()
+        public void Mostrardados()
         {
             Console.WriteLine($"Sentido = {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome} - NF = {Nf} - Peso Chegada = {PesoSaida} - Peso Saida = {PesoChegada} - Peso NF = {PesoNf} - Status Pesagem = {StatusPesagem}");
         }
