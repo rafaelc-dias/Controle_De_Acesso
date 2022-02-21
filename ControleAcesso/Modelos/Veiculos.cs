@@ -17,5 +17,10 @@ namespace ControleAcesso.Class
             Modelo = modelo;
         }
 
+        public void AlterarModeloVeiculo(string modelo)
+        {
+            this.Modelo = modelo;
+        }
+
     }
 }
