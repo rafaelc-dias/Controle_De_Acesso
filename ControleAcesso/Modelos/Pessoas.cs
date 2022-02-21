@@ -17,6 +17,11 @@ namespace ControleAcesso.Class
             Nome = nome;
         }
 
+        public void AltearNomePessoa(string nome)
+        {
+            this.Nome = nome;
+        }
+
         
     }
 }
