@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Teste_C\\Begin\\ControleAcesso\\ControleAcesso.csproj",
-      "projectName": "ControleAcesso",
-      "projectPath": "C:\\Teste_C\\Begin\\ControleAcesso\\ControleAcesso.csproj",
+      "projectUniqueName": "C:\\Teste_C\\Begin\\ControleAcesso\\ControleAcesso.Domain.csproj",
+      "projectName": "ControleAcesso.Domain",
+      "projectPath": "C:\\Teste_C\\Begin\\ControleAcesso\\ControleAcesso.Domain.csproj",
       "packagesPath": "C:\\Users\\rafael.dias\\.nuget\\packages\\",
       "outputPath": "C:\\Teste_C\\Begin\\ControleAcesso\\obj\\",
       "projectStyle": "PackageReference",

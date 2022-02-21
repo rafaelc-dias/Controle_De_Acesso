@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9CUCkOkzK9xAZfE8WnYqIcF6BvueRE7D9KC4GTuzn/JLjA1qp22WSI4KmXNaSzkYGKhA3mM2T31j9mDBboHWMQ==",
+  "dgSpecHash": "cZQQqhZdVcbe8j9lhBFD5rqwFS2jybdHfW+doJE1WjYWXwPJ29B5OA5Hyd0NCZwH4zzZynT3UWsl+bN3+WYVRg==",
   "success": true,
-  "projectFilePath": "C:\\Teste_C\\Begin\\ControleAcesso\\ControleAcesso.csproj",
+  "projectFilePath": "C:\\Teste_C\\Begin\\ControleAcesso\\ControleAcesso.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
