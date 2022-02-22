@@ -1,5 +1,4 @@
 ﻿using ControleAcesso.Class;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleAcesso.API.Controllers
@@ -55,16 +54,16 @@ namespace ControleAcesso.API.Controllers
             return Ok(Movimentos);
         }
 
-        [HttpGet("RetonarMovimentosPorStatus")]
-        public async Task<IActionResult> RetonarMovimentosPorSentidoTipoStatus(EStatusMovimento statusMovimento)
+        [HttpGet("RetonarMovimentosAbertos")]
+        public async Task<IActionResult> RetonarMovimentosAbertos()
         {
-            return Ok(Movimentos.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.StatusMovimento == statusMovimento));
+            return Ok(Movimentos.FindAll(RetornoMovimentosAbertos => RetornoMovimentosAbertos.StatusMovimento == EStatusMovimento.ABERTO));
         }
 
         [HttpGet("RetonarMovimentosPorSentidoTipoStatus")]
-        public async Task<IActionResult> RetonarMovimentosPorSentidoTipoStatus(ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento)
+        public async Task<IActionResult> RetonarMovimentosPorSentidoTipoStatus(FiltroMovimentoDTO filtroMovimentoDTO)
         {
-            return Ok(Movimentos.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.Sentido == sentido && RetornoSaidaCarroEmpresa.TipoMovimento == tipoMovimento && RetornoSaidaCarroEmpresa.StatusMovimento == statusMovimento));
+            return Ok(Movimentos.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.Sentido == filtroMovimentoDTO.Sentido && RetornoSaidaCarroEmpresa.TipoMovimento == filtroMovimentoDTO.TipoMovimento && RetornoSaidaCarroEmpresa.StatusMovimento == filtroMovimentoDTO.StatusMovimento));
         }
 
 
