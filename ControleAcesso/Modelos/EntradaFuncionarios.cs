@@ -10,7 +10,7 @@ namespace ControleAcesso.Class
     public class EntradaFuncionarios : Movimento
     {
         
-        public EntradaFuncionarios(ESentido sentido,ETipoMovimento etipoMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, etipoMovimento, data, veiculo, motorista, observacao)
+        public EntradaFuncionarios(ESentido sentido,ETipoMovimento etipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, etipoMovimento, statusMovimento, data, veiculo, motorista, observacao)
         {
         }
 

@@ -8,17 +8,20 @@ namespace ControleAcesso.Class
 {
     public class Movimento
     {
+        public Guid Id { get; set; }
         public ESentido Sentido { get; private set; }
         public ETipoMovimento TipoMovimento {get; private set;}
+        public EStatusMovimento StatusMovimento { get; private set;}
         public string Data { get; private set; }
         public Veiculos Veiculo { get; private set; }
         public Pessoas Motorista { get; private set; }
         public string Observacao { get; private set; }       
 
-        public Movimento(ESentido sentido, ETipoMovimento tipoMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao)
+        public Movimento(ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao)
         {
             Sentido = sentido;
             TipoMovimento = tipoMovimento;
+            StatusMovimento = statusMovimento;
             Data = data;
             Veiculo = veiculo;
             Motorista = motorista;

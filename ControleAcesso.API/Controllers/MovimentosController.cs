@@ -55,6 +55,18 @@ namespace ControleAcesso.API.Controllers
             return Ok(Movimentos);
         }
 
+        [HttpGet("RetonarMovimentosPorStatus")]
+        public async Task<IActionResult> RetonarMovimentosPorSentidoTipoStatus(EStatusMovimento statusMovimento)
+        {
+            return Ok(Movimentos.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.StatusMovimento == statusMovimento));
+        }
+
+        [HttpGet("RetonarMovimentosPorSentidoTipoStatus")]
+        public async Task<IActionResult> RetonarMovimentosPorSentidoTipoStatus(ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento)
+        {
+            return Ok(Movimentos.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.Sentido == sentido && RetornoSaidaCarroEmpresa.TipoMovimento == tipoMovimento && RetornoSaidaCarroEmpresa.StatusMovimento == statusMovimento));
+        }
+
 
     }
 }
