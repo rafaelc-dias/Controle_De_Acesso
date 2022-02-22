@@ -13,7 +13,7 @@ namespace ControleAcesso.Class
         public string HoraSaida { get; private set; }
         public string Destino { get; private set; }
 
-        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, data, veiculo, motorista, observacao)
+        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, ETipoMovimento tipoMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, tipoMovimento, data, veiculo, motorista, observacao)
         {
             KmSaida = kmSaida;
             NivelCombustivelSaida = nivelCombustivelSaida;

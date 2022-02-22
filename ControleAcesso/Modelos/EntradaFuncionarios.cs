@@ -9,8 +9,8 @@ namespace ControleAcesso.Class
 {
     public class EntradaFuncionarios : Movimento
     {
-        [JsonConstructor]
-        public EntradaFuncionarios(ESentido sentido, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, data, veiculo, motorista, observacao)
+        
+        public EntradaFuncionarios(ESentido sentido,ETipoMovimento etipoMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, etipoMovimento, data, veiculo, motorista, observacao)
         {
         }
 

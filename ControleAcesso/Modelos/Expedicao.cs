@@ -9,7 +9,7 @@ namespace ControleAcesso.Class
     public class Expedicao : Recebimento
     {
 
-        public Expedicao(string nf, double pesoSaida, double pesoChegada, double pesoNf, ESentido eSentido, string data, Veiculos veic, Pessoas mot, string obs) : base(nf, pesoSaida, pesoChegada, pesoNf, eSentido, data, veic, mot, obs)
+        public Expedicao(string nf, double pesoSaida, double pesoChegada, double pesoNf, ESentido eSentido, ETipoMovimento eTipoMovimento, string data, Veiculos veic, Pessoas mot, string obs) : base(nf, pesoSaida, pesoChegada, pesoNf, eSentido, eTipoMovimento, data, veic, mot, obs)
         {
         }
 

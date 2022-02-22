@@ -22,6 +22,7 @@ namespace ControleAcesso.Class
             string opcao = "S";
             string sentido;
             ESentido esentido;
+            ETipoMovimento etipoMovimento = ETipoMovimento.ENTRADAFUNCIONARIO;
             string data;
             string obs;
             string placa;
@@ -142,13 +143,13 @@ namespace ControleAcesso.Class
                                     switch (opcao)
                                     {
                                         case "E":
-                                            Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), esentido, data, veiculos, pessoas, obs);
+                                            Expedicao exp = new(nf, double.Parse(pesosai), double.Parse(pesocgd), double.Parse(pesonf), esentido, etipoMovimento, data, veiculos, pessoas, obs);
                                             mov.Add(exp);
                                             Continuar("MOVIMENTAÇÃO DE EXPEDIÇÂO REGISTRADA");
                                             break;
 
                                         case "R":
-                                            Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), esentido, data, veiculos, pessoas, obs);
+                                            Recebimento rec = new(nf, double.Parse(pesocgd), double.Parse(pesosai), double.Parse(pesonf), esentido, etipoMovimento, data, veiculos, pessoas, obs);
                                             mov.Add(rec);
                                             Continuar("MOVIMENTAÇÃO DE RECEBIMENTO REGISTRADA");
                                             break;
@@ -185,7 +186,7 @@ namespace ControleAcesso.Class
 
                                 if(msg == "")
                                 {
-                                    SaidaCarroEmpresa sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, esentido, data, veiculos, pessoas, obs);
+                                    SaidaCarroEmpresa sec = new(Int32.Parse(kms), Int32.Parse(nivcmbs), hrs, des, esentido, etipoMovimento,data, veiculos, pessoas, obs);
                                     mov.Add(sec);
                                     Continuar("MOVIMENTAÇÃO DE SAIDA REGISTRADA");                                 
 
@@ -199,7 +200,7 @@ namespace ControleAcesso.Class
 
                             case "3":
 
-                                EntradaFuncionarios ent = new(ESentido.ENTRADA, data, veiculos, pessoas, obs);
+                                EntradaFuncionarios ent = new(ESentido.ENTRADA, etipoMovimento, data, veiculos, pessoas, obs);
                                 mov.Add(ent);
                                 Continuar("MOVIMENTAÇÃO DE ENTRADA DE FUNCIONARIO REGISTRADA");
                                 break;
