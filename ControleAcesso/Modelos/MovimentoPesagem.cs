@@ -14,7 +14,7 @@ namespace ControleAcesso.Class
         public double PesoNf { get; private set; }
         public string StatusPesagem { get; private set; }
 
-        public MovimentoPesagem(string nf, double pesoChegada, double pesoSaida, double pesoNf, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string obs) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, motorista,  obs)
+        public MovimentoPesagem(string nf, double pesoChegada, double pesoSaida, double pesoNf, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, motorista, observacao)
         {
             Nf = nf;
             PesoChegada = pesoChegada;

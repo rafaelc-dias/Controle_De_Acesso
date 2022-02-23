@@ -60,10 +60,20 @@ namespace ControleAcesso.API.Controllers
             return Ok(Movimentos.FindAll(RetornoMovimentosAbertos => RetornoMovimentosAbertos.StatusMovimento == EStatusMovimento.ABERTO));
         }
 
-        [HttpGet("RetonarMovimentosPorSentidoTipoStatus")]
+        [HttpGet("RetonarMovimentosPorId{id}")]
+        public async Task<IActionResult> RetonarMovimentosPorId(string id)
+        {
+            return Ok(Movimentos.FindAll(RetornoMovimentosAbertos => RetornoMovimentosAbertos.Id.ToString() == id));
+        }
+
+        [HttpPost("RetonarMovimentosPorSentidoTipoStatus")]
         public async Task<IActionResult> RetonarMovimentosPorSentidoTipoStatus(FiltroMovimentoDTO filtroMovimentoDTO)
         {
-            return Ok(Movimentos.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.Sentido == filtroMovimentoDTO.Sentido && RetornoSaidaCarroEmpresa.TipoMovimento == filtroMovimentoDTO.TipoMovimento && RetornoSaidaCarroEmpresa.StatusMovimento == filtroMovimentoDTO.StatusMovimento));
+            return Ok(Movimentos.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.Sentido == filtroMovimentoDTO.Sentido && 
+                                                                     RetornoSaidaCarroEmpresa.TipoMovimento == filtroMovimentoDTO.TipoMovimento && 
+                                                                     RetornoSaidaCarroEmpresa.StatusMovimento == filtroMovimentoDTO.StatusMovimento));
+
+            
         }
 
 
