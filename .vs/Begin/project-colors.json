@@ -1,31 +1,21 @@
 {
   "Version": 1,
   "ProjectMap": {
-    "75bd601c-f150-431c-a413-66c82e324740": {
-      "ProjectGuid": "75bd601c-f150-431c-a413-66c82e324740",
-      "DisplayName": "ControleAcesso",
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Arquivos Diversos",
+      "ColorIndex": -1
+    },
+    "acd99c31-0ab5-4f5f-9ddb-6160e4330896": {
+      "ProjectGuid": "acd99c31-0ab5-4f5f-9ddb-6160e4330896",
+      "DisplayName": "ControleAcesso.API",
       "ColorIndex": 0
     },
     "af657985-1c73-4a80-849b-2794033f8edf": {
       "ProjectGuid": "af657985-1c73-4a80-849b-2794033f8edf",
       "DisplayName": "ControleAcesso.Domain",
       "ColorIndex": 1
-    },
-    "be15179b-c7e0-478c-97b8-4370a88b21fc": {
-      "ProjectGuid": "be15179b-c7e0-478c-97b8-4370a88b21fc",
-      "DisplayName": "ApiControleAcesso",
-      "ColorIndex": 2
-    },
-    "acd99c31-0ab5-4f5f-9ddb-6160e4330896": {
-      "ProjectGuid": "acd99c31-0ab5-4f5f-9ddb-6160e4330896",
-      "DisplayName": "ControleAcesso.API",
-      "ColorIndex": 3
-    },
-    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
-      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
-      "DisplayName": "Arquivos Diversos",
-      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 2
 }

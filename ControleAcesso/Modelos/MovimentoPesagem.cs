@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControleAcesso.Class
 {
-    public class Recebimento : Movimento
+    public class MovimentoPesagem : Movimento
     {
         public string Nf { get; private set; }
         public double PesoChegada { get; private set; }
@@ -14,14 +14,16 @@ namespace ControleAcesso.Class
         public double PesoNf { get; private set; }
         public string StatusPesagem { get; private set; }
 
-        public Recebimento(string nf, double pesoChegada, double pesoSaida, double pesoNf, ESentido eSentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string obs) : base(eSentido, tipoMovimento, statusMovimento, data, veiculo, motorista,  obs)
+        public MovimentoPesagem(string nf, double pesoChegada, double pesoSaida, double pesoNf, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, motorista, observacao)
         {
             Nf = nf;
             PesoChegada = pesoChegada;
             PesoSaida = pesoSaida;
             PesoNf = pesoNf;
 
-            if ((PesoChegada - PesoSaida) != PesoNf)
+            
+
+            if (((tipoMovimento == ETipoMovimento.RECEBIMENTO) && ((PesoChegada - PesoSaida) != PesoNf)) || ((tipoMovimento == ETipoMovimento.EXPEDICAO) && ((PesoSaida - PesoChegada) != PesoNf)))
             {
                 StatusPesagem = "Pesagem bloqueada !!!";
             }

@@ -13,14 +13,14 @@ namespace ControleAcesso.Class
         public string HoraSaida { get; private set; }
         public string Destino { get; private set; }
 
-        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, data, veiculo, motorista, observacao)
+        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, motorista, observacao)
         {
             KmSaida = kmSaida;
             NivelCombustivelSaida = nivelCombustivelSaida;
             HoraSaida = horaSaida;
             Destino = destino;
         }
-        public override void Mostrardados()
+        public void Mostrardados()
         {
             Console.WriteLine($"Sentido =  {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome} - KM Saida = {KmSaida} - Nivel Comb. = {NivelCombustivelSaida} - Hora Saida = {HoraSaida} - Destino = {Destino}");
         }
