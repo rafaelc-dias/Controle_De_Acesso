@@ -8,7 +8,7 @@ namespace ControleAcesso.Class
 {
     public class Movimentos
     {
-        public Guid Id { get; private set; }
+        public Guid Id { get; private set; } = Guid.NewGuid();
         public ESentido Sentido { get; private set; }
         public ETipoMovimento TipoMovimento {get; private set;}
         public EStatusMovimento StatusMovimento { get; private set;}

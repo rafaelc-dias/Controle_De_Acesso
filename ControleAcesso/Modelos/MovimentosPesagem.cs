@@ -8,7 +8,7 @@ namespace ControleAcesso.Class
         public List<NotasFiscais> NotasFiscais { get; private set; } = new();
         public double PesoChegada { get; private set; }
         public double PesoSaida { get; private set; }
-        
+        public double TotalPesoNotaFiscal { get; private set; }
         public string StatusPesagem { get; private set; }
 
         public MovimentosPesagem(double pesoChegada, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, motorista, observacao)
@@ -33,9 +33,9 @@ namespace ControleAcesso.Class
 
         public void DefineStatusPesagem()
         {
-            double totalPesoNotaFiscal = NotasFiscais.Sum(x => x.PesoNotaFiscal);
+            TotalPesoNotaFiscal = NotasFiscais.Sum(x => x.PesoNotaFiscal);
 
-            if (((this.TipoMovimento == ETipoMovimento.RECEBIMENTO) && ((PesoChegada - PesoSaida) != totalPesoNotaFiscal)) || ((this.TipoMovimento == ETipoMovimento.EXPEDICAO) && ((PesoSaida - PesoChegada) != totalPesoNotaFiscal)))
+            if (((TipoMovimento == ETipoMovimento.RECEBIMENTO) && ((PesoChegada - PesoSaida) != TotalPesoNotaFiscal)) || ((TipoMovimento == ETipoMovimento.EXPEDICAO) && ((PesoSaida - PesoChegada) != TotalPesoNotaFiscal)))
             {
                 StatusPesagem = "Pesagem bloqueada !!!";
             }
