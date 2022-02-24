@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ControleAcesso.Class
 {
-    public class Movimento
+    public class Movimentos
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
         public ESentido Sentido { get; private set; }
         public ETipoMovimento TipoMovimento {get; private set;}
         public EStatusMovimento StatusMovimento { get; private set;}
@@ -17,7 +17,7 @@ namespace ControleAcesso.Class
         public Pessoas Motorista { get; private set; }
         public string Observacao { get; private set; }       
 
-        public Movimento(ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao)
+        public Movimentos(ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao)
         {
             Sentido = sentido;
             TipoMovimento = tipoMovimento;
@@ -28,6 +28,11 @@ namespace ControleAcesso.Class
             Observacao = observacao;
 
            
+        }
+
+        public void AlterarObservacao(string observacao)
+        {
+            this.Observacao = observacao;
         }
 
         public void Mostrardados()

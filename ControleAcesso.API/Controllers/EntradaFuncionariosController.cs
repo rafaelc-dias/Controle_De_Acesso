@@ -8,7 +8,7 @@ namespace ControleAcesso.API.Controllers
     [ApiController]
     public class EntradaFuncionariosController : ControllerBase
     {
-        private static List<Movimento> ListaEntradaFuncionarios = new();
+        private static List<Movimentos> ListaEntradaFuncionarios = new();
 
         [HttpGet]
         public async Task<IActionResult> RetonarEntradaFuncionarios()
@@ -17,7 +17,7 @@ namespace ControleAcesso.API.Controllers
         }        
 
         [HttpPost]
-        public async Task<IActionResult> AdiconarEntradaFuncionarios(Movimento entradaFuncionario)
+        public async Task<IActionResult> AdiconarEntradaFuncionarios(Movimentos entradaFuncionario)
         {
             ListaEntradaFuncionarios.Add(entradaFuncionario);
             return Ok(ListaEntradaFuncionarios);
