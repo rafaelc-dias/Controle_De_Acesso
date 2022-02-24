@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ControleAcesso.Class
 {
-    public class EntradaFuncionarios : Movimento
+    public class EntradaFuncionarios : Movimentos
     {
         
         public EntradaFuncionarios(ESentido sentido,ETipoMovimento etipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, etipoMovimento, statusMovimento, data, veiculo, motorista, observacao)

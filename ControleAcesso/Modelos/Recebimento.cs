@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControleAcesso.Class
 {
-    public class Recebimento : Movimento
+    public class Recebimento : Movimentos
     {
         public string Nf { get; private set; }
         public double PesoChegada { get; private set; }
