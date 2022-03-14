@@ -32,7 +32,7 @@ namespace ControleAcesso.API.Controllers
             if (movimento == null)
                 return BadRequest("Movimento não encontrado");
 
-            movimento.AlterarObservacao(movimentoObservacaoDTO.Observacao);
+            //movimento.AlterarObservacao(movimentoObservacaoDTO.Observacao);
             return Ok($"Observação do movimento de ID {movimentoObservacaoDTO.Id}, alterado !!!");
 
         }

@@ -10,14 +10,14 @@ namespace ControleAcesso.Class
     public class EntradaFuncionarios : Movimentos
     {
         
-        public EntradaFuncionarios(ESentido sentido,ETipoMovimento etipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, etipoMovimento, statusMovimento, data, veiculo, motorista, observacao)
+       public EntradaFuncionarios(ESentido sentido,ETipoMovimento etipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas pessoa) : base(sentido, etipoMovimento, statusMovimento, data, veiculo, pessoa)       
         {
         }
 
-        public void Mostrardados()
+        /*public void Mostrardados()
         {
             Console.WriteLine($"Sentido = {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome}");
-        }
+        }*/
     }
 
 }

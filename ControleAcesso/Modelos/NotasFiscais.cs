@@ -2,7 +2,7 @@
 {
     public class NotasFiscais
     {
-        public Guid Id { get; private set; }
+        public Guid Id { get; private set; } 
         public Guid IdMovimento { get; private set; }
         public int NumeroNotaFiscal { get; private set; }
         public double PesoNotaFiscal { get; private set; }
