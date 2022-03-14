@@ -14,7 +14,7 @@ namespace ControleAcesso.Class
         public double PesoNf { get; private set; }
         public string StatusPesagem { get; private set; }
 
-        public Recebimento(string nf, double pesoChegada, double pesoSaida, double pesoNf, ESentido eSentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string obs) : base(eSentido, tipoMovimento, statusMovimento, data, veiculo, motorista,  obs)
+        public Recebimento(string nf, double pesoChegada, double pesoSaida, double pesoNf, ESentido eSentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas pessoa) : base(eSentido, tipoMovimento, statusMovimento, data, veiculo, pessoa)
         {
             Nf = nf;
             PesoChegada = pesoChegada;
@@ -31,10 +31,10 @@ namespace ControleAcesso.Class
             }
         }        
 
-        public void Mostrardados()
+        /*public void Mostrardados()
         {
             Console.WriteLine($"Sentido =  {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome} - NF = {Nf} - Peso Chegada = {PesoChegada} - Peso Saida = {PesoSaida} - Peso NF = {PesoNf} - Status Pesagem = {StatusPesagem}");
-        }
+        }*/
 
     }
 

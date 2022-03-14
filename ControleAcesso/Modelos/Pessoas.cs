@@ -8,6 +8,7 @@ namespace ControleAcesso.Class
 {
     public class Pessoas
     {
+        public Guid Id { get; private set; }
         public string Documento { get; private set; }
         public string Nome  { get; private set; }
 

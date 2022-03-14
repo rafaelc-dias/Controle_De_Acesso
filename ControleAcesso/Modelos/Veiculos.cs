@@ -8,6 +8,7 @@ namespace ControleAcesso.Class
 {
     public class Veiculos
     {
+        public Guid Id { get; private set; }
         public string Placa { get; private set; }        
         public string Modelo { get; private  set; }
 

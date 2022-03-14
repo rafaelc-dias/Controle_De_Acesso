@@ -1,8 +1,25 @@
+using ControleAcesso.Domain.Interfaces;
+using ControleAcesso.Domain.Serviços;
+using ControleAcesso.Infraestrutura.Contexto;
+
+using ControleAcesso.Infraestrutura.Repositorio;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddDbContext<ControleAcessoContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddScoped<IPessoas, PessoasRepositorio>();
+builder.Services.AddScoped<IPessoas, PessoasServico>();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -16,7 +16,12 @@ namespace ControleAcesso.Class
         public string HoraEntrada { get; private set; }
         public string Destino { get; private set; }
 
-        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, motorista, observacao)
+        protected SaidaCarroEmpresa()
+        {
+
+        }
+
+        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas pessoa) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, pessoa)
         {
             KmSaida = kmSaida;
             NivelCombustivelSaida = nivelCombustivelSaida;
@@ -32,10 +37,10 @@ namespace ControleAcesso.Class
 
         }
 
-        public void Mostrardados()
+        /*public void Mostrardados()
         {
             Console.WriteLine($"Sentido =  {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome} - KM Saida = {KmSaida} - Nivel Comb. = {NivelCombustivelSaida} - Hora Saida = {HoraSaida} - Destino = {Destino}");
-        }
+        }*/
 
         
 

@@ -5,13 +5,16 @@ namespace ControleAcesso.Class
 {
     public class MovimentosPesagem : Movimentos
     {
-        public List<NotasFiscais> NotasFiscais { get; private set; } = new();
         public double PesoChegada { get; private set; }
         public double PesoSaida { get; private set; }
         public double TotalPesoNotaFiscal { get; private set; }
         public string StatusPesagem { get; private set; }
 
-        public MovimentosPesagem(double pesoChegada, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas motorista, string observacao) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, motorista, observacao)
+        protected MovimentosPesagem()
+        {
+        }
+
+        public MovimentosPesagem(double pesoChegada, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas pessoa) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, pessoa)
         {
            PesoChegada = pesoChegada;
 
@@ -21,15 +24,6 @@ namespace ControleAcesso.Class
         {
             PesoSaida = pesoSaida;
         }
-
-        public void IncluiNotaFiscalPesagem(NotasFiscaisDTO notasFiscaisDTO)
-        {
-            NotasFiscais notaFiscal = new(notasFiscaisDTO.IdMovimento, notasFiscaisDTO.NumeroNotaFiscal, notasFiscaisDTO.PesoNotaFiscal);
-
-            NotasFiscais.Add(notaFiscal);
-
-        }
-
 
         public void DefineStatusPesagem()
         {
@@ -45,10 +39,10 @@ namespace ControleAcesso.Class
             }
         }        
 
-        public void Mostrardados()
+        /*public void Mostrardados()
         {
             Console.WriteLine($"Sentido =  {Sentido} - Data = {Data} - Placa = {Veiculo.Placa} - Pessoa = {Motorista.Nome} - Peso Chegada = {PesoChegada} - Peso Saida = {PesoSaida}  - Status Pesagem = {StatusPesagem}");
-        }
+        }*/
 
     }
 
