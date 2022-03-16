@@ -3,11 +3,11 @@ using ControleAcesso.Domain.Interfaces;
 
 namespace ControleAcesso.Domain.Serviços
 {
-    public class PessoasServico : IPessoas
+    public class PessoasServico : IPessoasServico
     {
-        private readonly IPessoas _pessoasRepositorio;
+        private readonly IPessoasRepositorio _pessoasRepositorio;
 
-        public PessoasServico(IPessoas pessoasRepositorio)
+        public PessoasServico(IPessoasRepositorio pessoasRepositorio)
         {
             _pessoasRepositorio = pessoasRepositorio;
         }
@@ -35,7 +35,7 @@ namespace ControleAcesso.Domain.Serviços
             }
         }
 
-        public async Task Excluir(string pessoaId)
+        public async Task Excluir(Guid pessoaId)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace ControleAcesso.Domain.Serviços
             }
         }
 
-        public async Task<Pessoas> Pesquisar(string pessoaId)
+        public async Task<Pessoas> Pesquisar(Guid pessoaId)
         {
             try
             {

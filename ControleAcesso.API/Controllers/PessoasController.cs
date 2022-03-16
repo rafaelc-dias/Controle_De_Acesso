@@ -1,4 +1,7 @@
 ﻿using ControleAcesso.Class;
+using ControleAcesso.Domain.DTO;
+using ControleAcesso.Domain.Interfaces;
+using ControleAcesso.Domain.Serviços;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,53 +11,84 @@ namespace ControleAcesso.API.Controllers
     [ApiController]
     public class PessoasController : ControllerBase
     {
-        private static List<Pessoas> ListaPessoas = new();
+        private readonly IPessoasServico _pessoasServicos;
 
-        [HttpGet]
-        public async Task<IActionResult> RetonarPessoas()
+        public PessoasController(IPessoasServico pessoasServiços)
         {
-            return Ok(ListaPessoas);
+            _pessoasServicos = pessoasServiços;
         }
 
-        [HttpGet("{documento}")]
-        public async Task<IActionResult> RetonarPessoas(string documento)
+        [HttpGet]
+        [Route("listar")]
+        public async Task<IActionResult> Listar()
         {
-            var pessoa = ListaPessoas.Find(pessoaResultado => pessoaResultado.Documento == documento);
+            try
+            {
+                return Ok(await _pessoasServicos.Listar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-            if (pessoa == null)
-                return BadRequest("Pessoa não encontrada");
-            return Ok(pessoa);
+        [HttpGet]
+        [Route("pesquisar/{id}")]
+        public async Task<IActionResult> RetonarPessoas(Guid id)
+        {
+            try
+            {
+                return Ok(await _pessoasServicos.Pesquisar(id));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> AdiconarPessoa(Pessoas pessoa)
+        [Route("cadastrar")]
+        public async Task<IActionResult> AdiconarPessoa(PessoasDTO pessoaDTO)
         {
-            ListaPessoas.Add(pessoa);
-            return Ok(ListaPessoas);
+            try
+            {
+                await _pessoasServicos.Cadastrar(pessoaDTO.ConverterPessoa());
+                return Ok("Cadastrado !!!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpPut]
-        public async Task<IActionResult> AlterarPessoa(Pessoas pessoaProcurada)
+        [Route("atualizar")]
+        public async Task<IActionResult> AlterarPessoa(PessoasDTO pessoaDTO)
         {
-            var pessoa = ListaPessoas.Find(pessoaResultado => pessoaResultado.Documento == pessoaProcurada.Documento);
-
-            if (pessoa == null)
-                return BadRequest("Pessoa não encontrada");
-
-            pessoa.AltearNomePessoa(pessoaProcurada.Nome);
-           
-            return Ok(pessoa);
+            try
+            {
+                await _pessoasServicos.Atualizar(pessoaDTO.ConverterPessoa());
+                return Ok("Atualizado !!!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        [HttpDelete("{documento}")]
-        public async Task<IActionResult> RemoverPessoas(string documento)
+        [HttpDelete]
+        [Route("excluir/{id}")]
+        public async Task<IActionResult> RemoverPessoas(Guid id)
         {
-            var pessoa = ListaPessoas.Find(pessoaResultado => pessoaResultado.Documento == documento);
-
-            if (pessoa == null)
-                return BadRequest("Pessoa não encontrada");
-            ListaPessoas.Remove(pessoa);
-            return Ok(pessoa);
+            try
+            {
+                await _pessoasServicos.Excluir(id);
+                return Ok("Exclusão");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
