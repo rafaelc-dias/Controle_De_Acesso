@@ -12,8 +12,9 @@ namespace ControleAcesso.Class
         public string Documento { get; private set; }
         public string Nome  { get; private set; }
 
-        public Pessoas(string documento, string nome)
+        public Pessoas(Guid id,string documento, string nome)
         {
+            Id = id;
             Documento = documento;
             Nome = nome;
         }

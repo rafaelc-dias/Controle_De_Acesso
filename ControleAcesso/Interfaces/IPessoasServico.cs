@@ -2,14 +2,12 @@
 
 namespace ControleAcesso.Domain.Interfaces
 {
-    public interface IPessoas
+    public interface IPessoasServico
     {
         Task Cadastrar(Pessoas pessoas);
         Task Atualizar(Pessoas pessoas);
         Task<List<Pessoas>> Listar();
-        Task Excluir(string pessoaId);
-        Task<Pessoas> Pesquisar(string pessoaId);
-
-
+        Task Excluir(Guid pessoaId);
+        Task<Pessoas> Pesquisar(Guid pessoaId);
     }
 }
