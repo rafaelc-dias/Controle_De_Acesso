@@ -1,4 +1,6 @@
 ﻿using ControleAcesso.Class;
+using ControleAcesso.Domain.DTO;
+using ControleAcesso.Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,51 +12,84 @@ namespace ControleAcesso.API.Controllers
     {
         private static List<Veiculos> ListaVeiculos = new();
 
-        [HttpGet]
-        public async Task<IActionResult> RetonarVeiculos()
+        private readonly IVeiculosServico _veiculosServico;
+
+        public VeiculosController(IVeiculosServico veiculosServico)
         {
-            return Ok(ListaVeiculos);
+            _veiculosServico = veiculosServico;
         }
 
-        [HttpGet("{placa}")]
-        public async Task<IActionResult> RetonarVeiculos(string placa)
+        [HttpGet]
+        [Route("listar")]
+        public async Task<IActionResult> listar()
         {
-            var veiculo = ListaVeiculos.Find(placaResultado => placaResultado.Placa == placa);
+            try
+            {
+                return Ok(await _veiculosServico.Listar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-            if (veiculo == null)
-                return BadRequest("Pessoa não encontrada");
-            return Ok(veiculo);
+        [HttpGet]
+        [Route("pesquisar/{id}")]
+        public async Task<IActionResult> RetonarVeiculos(Guid id)
+        {
+            try
+            {
+                return Ok(await _veiculosServico.Pesquisar(id));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> AdiconarVeiculos(Veiculos veiculo)
+        [Route("cadastrar")]
+        public async Task<IActionResult> AdiconarVeiculos(VeiculosDTO veiculoDTO)
         {
-            ListaVeiculos.Add(veiculo);
-            return Ok(ListaVeiculos);
+            try
+            {
+                await _veiculosServico.Cadastrar(veiculoDTO.ConverteVeiculo());
+                return Ok("Cadastrado !!!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpPut]
-        public async Task<IActionResult> AlterarVeiculos(Veiculos veiculoProcurado)
+        [Route("atualizar")]
+        public async Task<IActionResult> AlterarVeiculos(VeiculosDTO veiculoDTO)
         {
-            var veiculo = ListaVeiculos.Find(veiculoResultado => veiculoResultado.Placa == veiculoProcurado.Placa);
-
-            if (veiculo == null)
-                return BadRequest("Pessoa não encontrada");
-
-            veiculo.AlterarModeloVeiculo(veiculoProcurado.Modelo);
-
-            return Ok(veiculo);
+            try
+            {
+                await _veiculosServico.Atualizar(veiculoDTO.ConverteVeiculo());
+                return Ok("Atualizado !!!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        [HttpDelete("{placa}")]
-        public async Task<IActionResult> RemoverVeiculos(string placa)
+        [HttpDelete]
+        [Route("excluir/{id}")]
+        public async Task<IActionResult> RemoverVeiculos(Guid id)
         {
-            var veiculo = ListaVeiculos.Find(veiculoResultado => veiculoResultado.Placa == placa);
-
-            if (veiculo == null)
-                return BadRequest("Pessoa não encontrada");
-            ListaVeiculos.Remove(veiculo);
-            return Ok(veiculo);
+            try
+            {
+                await _veiculosServico.Excluir(id);
+                return Ok("Exclusão");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
