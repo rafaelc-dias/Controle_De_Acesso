@@ -12,8 +12,9 @@ namespace ControleAcesso.Class
         public string Placa { get; private set; }        
         public string Modelo { get; private  set; }
 
-        public Veiculos(string placa, string modelo)
+        public Veiculos(Guid id, string placa, string modelo)
         {
+            Id = id;
             Placa = placa;
             Modelo = modelo;
         }

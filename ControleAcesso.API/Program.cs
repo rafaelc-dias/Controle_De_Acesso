@@ -19,6 +19,9 @@ builder.Services.AddDbContext<ControleAcessoContext>(options =>
 builder.Services.AddScoped<IPessoasRepositorio, PessoasRepositorio>();
 builder.Services.AddScoped<IPessoasServico, PessoasServico>();
 
+builder.Services.AddScoped<IVeiculosRepositorio, VeiculosRepositorio>();
+builder.Services.AddScoped<IVeiculosServico, VeiculosServico>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
