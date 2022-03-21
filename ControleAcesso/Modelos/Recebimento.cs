@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControleAcesso.Class
 {
-    public class Recebimento : Movimentos
+    public class Recebimento : Movimento
     {
         public string Nf { get; private set; }
         public double PesoChegada { get; private set; }
@@ -14,7 +14,7 @@ namespace ControleAcesso.Class
         public double PesoNf { get; private set; }
         public string StatusPesagem { get; private set; }
 
-        public Recebimento(string nf, double pesoChegada, double pesoSaida, double pesoNf, ESentido eSentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas pessoa) : base(eSentido, tipoMovimento, statusMovimento, data, veiculo, pessoa)
+        public Recebimento(string nf, double pesoChegada, double pesoSaida, double pesoNf, ESentido eSentido, EStatusMovimento statusMovimento, DateTime data, Veiculo veiculo, Pessoa pessoa) : base(eSentido, statusMovimento, data, veiculo, pessoa)
         {
             Nf = nf;
             PesoChegada = pesoChegada;

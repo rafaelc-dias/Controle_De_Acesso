@@ -10,17 +10,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+   //AddNewtonsoftJson(opition => opition.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 builder.Services.AddDbContext<ControleAcessoContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddScoped<IPessoasRepositorio, PessoasRepositorio>();
-builder.Services.AddScoped<IPessoasServico, PessoasServico>();
+builder.Services.AddScoped<IPessoaRepositorio, PessoaRepositorio>();
+builder.Services.AddScoped<IPessoaServico, PessoaServico>();
 
-builder.Services.AddScoped<IVeiculosRepositorio, VeiculosRepositorio>();
-builder.Services.AddScoped<IVeiculosServico, VeiculosServico>();
+builder.Services.AddScoped<IVeiculoRepositorio, VeiculoRepositorio>();
+builder.Services.AddScoped<IVeiculoServico, VeiculoServico>();
+
+builder.Services.AddScoped<IEntradaFuncionarioRepositorio, EntradaFuncionarioRepositorio>();
+builder.Services.AddScoped<IEntradaFuncionarioServico , EntradaFuncionarioServico>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -11,4 +11,8 @@
     <Compile Remove="DTO\teste.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Modelos\Veiculoscs" />
+  </ItemGroup>
+
 </Project>

@@ -1,18 +1,21 @@
 ﻿using ControleAcesso.Class;
 using ControleAcesso.Domain.Modelos;
+using ControleAcesso.Infraestrutura.Mappings;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleAcesso.Infraestrutura.Contexto
 {
     public class ControleAcessoContext : DbContext
     {
-        public DbSet<Pessoas> Pessoas { get; set; }
-        public DbSet<Veiculos> Veiculos { get; set;}
-        public DbSet<NotasFiscais> NotasFiscais { get; set; }
-        public DbSet<Observacao> Observacao { get; set;}
-        public DbSet<Movimentos> Movimentos { get; set; }
-        public DbSet<MovimentosPesagem> MovimentosPesagem { get; set; }
-        public DbSet<SaidaCarroEmpresa> SaidaCarroEmpresa { get; set; }
+        public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<Veiculo> Veiculos { get; set;}
+        public DbSet<NotaFiscal> NotasFiscais { get; set; }
+        public DbSet<Observacao> Observacoes { get; set;}
+        //public DbSet<Movimento> Movimentos { get; set; }
+        public DbSet<MovimentoPesagem> MovimentosPesagem { get; set; }
+        public DbSet<SaidaCarroEmpresa> SaidasCarroEmpresa { get; set; }
+        public DbSet<EntradaFuncionario> EntradasFuncionarios { get; set; }
 
         public ControleAcessoContext(DbContextOptions options) : base(options)
         {
@@ -21,7 +24,16 @@ namespace ControleAcesso.Infraestrutura.Contexto
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.ApplyConfiguration(new EntradaFuncionarioMap());
+
+            modelBuilder.ApplyConfiguration(new SaidaCarroEmpresaMap());
+
             base.OnModelCreating(modelBuilder);
+
+           
         }
+
+        
     }
 }
