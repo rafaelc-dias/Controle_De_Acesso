@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControleAcesso.Class
 {
-    public class SaidaCarroEmpresa : Movimentos
+    public class SaidaCarroEmpresa : Movimento
     {
         public int KmSaida { get; private set; }
         public int NivelCombustivelSaida { get; private set; }
@@ -21,7 +21,7 @@ namespace ControleAcesso.Class
 
         }
 
-        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, ETipoMovimento tipoMovimento, EStatusMovimento statusMovimento, string data, Veiculos veiculo, Pessoas pessoa) : base(sentido, tipoMovimento, statusMovimento, data, veiculo, pessoa)
+        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, EStatusMovimento statusMovimento, string data, Veiculo veiculo, Pessoa pessoa) : base(sentido, statusMovimento, data, veiculo, pessoa)
         {
             KmSaida = kmSaida;
             NivelCombustivelSaida = nivelCombustivelSaida;
