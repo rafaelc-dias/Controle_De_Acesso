@@ -30,6 +30,19 @@ namespace ControleAcesso.Domain.Serviços
             
         }
 
+        public async Task AdicionaDataSaida(Guid movimentoId)
+        {
+            try
+            {
+                await _entradaFuncionarioRepositorio.AdicionaDataSaida(movimentoId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public async Task<int> Cadastrar(EntradaFuncionarioDTO movimentoDTO)
         {
             int retorno = 0;

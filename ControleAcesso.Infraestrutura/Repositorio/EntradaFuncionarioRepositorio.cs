@@ -27,6 +27,19 @@ namespace ControleAcesso.Infraestrutura.Repositorio
             }
         }
 
+        public async Task AdicionaDataSaida(Guid movimentoId)
+        {
+            var movimentopesquisa = await Pesquisar(movimentoId);
+            if (movimentopesquisa != null)
+            {
+                movimentopesquisa.AdicionaDataSaida();
+
+                _context.EntradasFuncionarios.Update(movimentopesquisa);
+                await _context.SaveChangesAsync();
+
+            }
+        }
+
         public async Task<int> Cadastrar(EntradaFuncionario movimento)
         {
             int retorno = 0;

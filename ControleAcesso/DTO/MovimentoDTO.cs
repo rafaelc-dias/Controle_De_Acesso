@@ -11,7 +11,7 @@ namespace ControleAcesso.Domain.DTO
     {
         public ESentido Sentido { get;  set; }
         public EStatusMovimento StatusMovimento { get;  set; }
-        public string Data { get;  set; }
+        public DateTime Data { get;  set; }
         public Veiculo Veiculo { get;  set; }
         public Pessoa Pessoa { get;  set; }
 

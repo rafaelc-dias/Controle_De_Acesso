@@ -1,5 +1,6 @@
 ﻿using ControleAcesso.Class;
 using ControleAcesso.Domain.Modelos;
+using ControleAcesso.Infraestrutura.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,7 +12,7 @@ namespace ControleAcesso.Infraestrutura.Contexto
         public DbSet<Veiculo> Veiculos { get; set;}
         public DbSet<NotaFiscal> NotasFiscais { get; set; }
         public DbSet<Observacao> Observacoes { get; set;}
-        public DbSet<Movimento> Movimentos { get; set; }
+        //public DbSet<Movimento> Movimentos { get; set; }
         public DbSet<MovimentoPesagem> MovimentosPesagem { get; set; }
         public DbSet<SaidaCarroEmpresa> SaidasCarroEmpresa { get; set; }
         public DbSet<EntradaFuncionario> EntradasFuncionarios { get; set; }
@@ -23,18 +24,16 @@ namespace ControleAcesso.Infraestrutura.Contexto
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.ApplyConfiguration(new EntradaFuncionarioMap());
+
+            modelBuilder.ApplyConfiguration(new SaidaCarroEmpresaMap());
+
             base.OnModelCreating(modelBuilder);
+
+           
         }
 
-        public void ConfigureMovimentos(EntityTypeBuilder<Movimento> builder)
-        {
-            builder.ToTable("Movimentos");
-
-            builder.HasDiscriminator<string>("TipoMovimento")
-                .HasValue<EntradaFuncionario>("EntradaFuncionarios")
-                .HasValue<Expedicao>("Expedicao")
-                .HasValue<Recebimento>("Recebimento")
-                .HasValue<SaidaCarroEmpresa>("SaidaCarroEmpresa");
-        }
+        
     }
 }

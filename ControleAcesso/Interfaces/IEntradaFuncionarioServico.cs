@@ -7,6 +7,7 @@ namespace ControleAcesso.Domain.Interfaces
     {
         Task<int> Cadastrar(EntradaFuncionarioDTO movimento);
         Task AlterarStatus(Guid movimentoId, EStatusMovimento status);
+        Task AdicionaDataSaida(Guid movimentoId);
         Task<List<EntradaFuncionario>> Listar();
         Task Excluir(Guid EntradaFuncionarioId);
         Task<EntradaFuncionario> Pesquisar(Guid EntradaFuncionarioId);

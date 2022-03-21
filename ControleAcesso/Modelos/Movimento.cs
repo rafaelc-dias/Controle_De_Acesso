@@ -3,26 +3,30 @@ using ControleAcesso.Domain.Modelos;
 
 namespace ControleAcesso.Class
 {
-    public class Movimento
+    public abstract class Movimento
     {
         public Guid Id { get; private set; }
         public ESentido Sentido { get; private set; }
         public EStatusMovimento StatusMovimento { get; private set;}
-        public string Data { get; private set; }
+        public DateTime Data { get; private set; }
         public Veiculo Veiculo { get;  set; }
         public Pessoa Pessoa { get;  set; }
         public List<NotaFiscal> NotasFiscais { get; private set; } = new();
         public List<Observacao> Observacoes { get; private set; } = new();
+
+        public virtual ETipoMovimento TipoMovimento { get {
+                return 1 == 1 ? ETipoMovimento.ENTRADAFUNCIONARIO : ETipoMovimento.EXPEDICAO;    
+            } 
+        }  
 
         protected Movimento()
         {
 
         }
         
-        public Movimento(ESentido sentido, EStatusMovimento statusMovimento, string data, Veiculo veiculo, Pessoa pessoa)
+        public Movimento(ESentido sentido, EStatusMovimento statusMovimento, DateTime data, Veiculo veiculo, Pessoa pessoa)
         {
             Sentido = sentido;
-            //TipoMovimento = tipoMovimento;
             StatusMovimento = statusMovimento;
             Data = data;
             Veiculo = veiculo;
