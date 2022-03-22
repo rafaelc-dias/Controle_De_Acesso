@@ -21,7 +21,7 @@ namespace ControleAcesso.Class
 
         }
 
-        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, DateTime data, Veiculo veiculo, Pessoa pessoa) : base(ESentido.ENTRADA, data, veiculo, pessoa)
+        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, DateTime data, Veiculo veiculo, Pessoa pessoa) : base(ESentido.SAIDA, data, veiculo, pessoa)
         {
             KmSaida = kmSaida;
             NivelCombustivelSaida = nivelCombustivelSaida;
@@ -29,7 +29,7 @@ namespace ControleAcesso.Class
             Destino = destino;
         }
 
-        public void InsereDadosEntrada(int kmEntrada, int nivelCombustivelEntrada, string horaEntrada)
+        public void InserirDadosEntrada(int kmEntrada, int nivelCombustivelEntrada, string horaEntrada)
         {
             this.KmEntrada = kmEntrada;
             this.NivelCombustivelEntrada = nivelCombustivelEntrada;

@@ -14,7 +14,7 @@ namespace ControleAcesso.Class
         {
         }
 
-        public MovimentoPesagem(double pesoChegada, ESentido sentido , EStatusMovimento statusMovimento, DateTime data, Veiculo veiculo, Pessoa pessoa) : base(sentido, statusMovimento, data, veiculo, pessoa)
+        public MovimentoPesagem(double pesoChegada, ESentido sentido , DateTime data, Veiculo veiculo, Pessoa pessoa) : base(sentido,data, veiculo, pessoa)
         {
            PesoChegada = pesoChegada;
 

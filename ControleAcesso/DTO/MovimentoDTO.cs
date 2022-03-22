@@ -17,7 +17,7 @@ namespace ControleAcesso.Domain.DTO
 
         public EntradaFuncionario ConverteEntradaFuncionario()
         {
-            EntradaFuncionario entradaFuncionario = new(Sentido, StatusMovimento, Data, Veiculo, Pessoa);
+            EntradaFuncionario entradaFuncionario = new( Data, Veiculo, Pessoa);
             return entradaFuncionario;
         }
 

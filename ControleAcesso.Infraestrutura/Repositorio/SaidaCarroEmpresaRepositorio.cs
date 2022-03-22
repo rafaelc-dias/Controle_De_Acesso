@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ControleAcesso.Infraestrutura.Repositorio
 {
-    public class SaidaCarroEmpresaRepositorio : ISaidaCarroEmpresa 
+    public class SaidaCarroEmpresaRepositorio : ISaidaCarroEmpresaRepositorio 
     {
         protected ControleAcessoContext _context ;
 
@@ -15,27 +15,27 @@ namespace ControleAcesso.Infraestrutura.Repositorio
             _context = context;
         }
 
-        public async Task AlterarStatus(Guid movimentoId, EStatusMovimento status)
+        public async Task AlterarStatusFechado(Guid movimentoId)
         {
             var movimentopesquisa = await Pesquisar(movimentoId);
             if (movimentopesquisa != null)
             {
-                movimentopesquisa.AlteraStatus(status);
+                movimentopesquisa.AlteraStatusFechado();
 
-                _context.EntradasFuncionarios.Update(movimentopesquisa);
+                _context.SaidasCarrosEmpresa.Update(movimentopesquisa);
                 await _context.SaveChangesAsync();
 
             }
         }
 
-        public async Task AdicionaDataSaida(Guid movimentoId)
+        public async Task InserirEntrada(Guid movimentoId, int kmEntrada, int nivelCombustivelEntrada, string horaEntrada)
         {
             var movimentopesquisa = await Pesquisar(movimentoId);
             if (movimentopesquisa != null)
             {
-                movimentopesquisa.AdicionaDataSaida();
+                movimentopesquisa.InserirDadosEntrada(kmEntrada, nivelCombustivelEntrada, horaEntrada);
 
-                _context.EntradasFuncionarios.Update(movimentopesquisa);
+                _context.SaidasCarrosEmpresa.Update(movimentopesquisa);
                 await _context.SaveChangesAsync();
 
             }
@@ -46,8 +46,10 @@ namespace ControleAcesso.Infraestrutura.Repositorio
             int retorno = 0;
 
             if (movimento != null)
+            {
                 await _context.SaidasCarrosEmpresa.AddAsync(movimento);
-            retorno = await _context.SaveChangesAsync();
+                retorno = await _context.SaveChangesAsync();
+            }
 
             return retorno;
         }
@@ -56,8 +58,10 @@ namespace ControleAcesso.Infraestrutura.Repositorio
         {
             var movimento = await Pesquisar(movimentoId);
             if (movimento != null && movimento.Id.Equals(movimentoId))
+            {
                 _context.SaidasCarrosEmpresa.Remove(movimento);
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<List<SaidaCarroEmpresa>> Listar()
