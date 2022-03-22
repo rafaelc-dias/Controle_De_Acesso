@@ -14,12 +14,12 @@ namespace ControleAcesso.Infraestrutura.Repositorio
             _context = context;
         }
 
-        public async Task AlterarStatus(Guid movimentoId, EStatusMovimento status)
+        public async Task AlterarStatusFechado(Guid movimentoId)
         {
             var movimentopesquisa = await Pesquisar(movimentoId);
             if (movimentopesquisa != null)
             {
-                movimentopesquisa.AlteraStatus(status);
+                movimentopesquisa.AlteraStatusFechado();
 
                 _context.EntradasFuncionarios.Update(movimentopesquisa);
                 await _context.SaveChangesAsync();
