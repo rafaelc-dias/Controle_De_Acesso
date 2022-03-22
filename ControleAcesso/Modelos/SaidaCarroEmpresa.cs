@@ -21,7 +21,7 @@ namespace ControleAcesso.Class
 
         }
 
-        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, ESentido sentido, EStatusMovimento statusMovimento, DateTime data, Veiculo veiculo, Pessoa pessoa) : base(sentido, statusMovimento, data, veiculo, pessoa)
+        public SaidaCarroEmpresa(int kmSaida, int nivelCombustivelSaida, string horaSaida, string destino, DateTime data, Veiculo veiculo, Pessoa pessoa) : base(ESentido.ENTRADA, data, veiculo, pessoa)
         {
             KmSaida = kmSaida;
             NivelCombustivelSaida = nivelCombustivelSaida;

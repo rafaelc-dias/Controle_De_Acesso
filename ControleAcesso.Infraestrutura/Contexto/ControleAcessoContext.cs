@@ -14,7 +14,7 @@ namespace ControleAcesso.Infraestrutura.Contexto
         public DbSet<Observacao> Observacoes { get; set;}
         //public DbSet<Movimento> Movimentos { get; set; }
         public DbSet<MovimentoPesagem> MovimentosPesagem { get; set; }
-        public DbSet<SaidaCarroEmpresa> SaidasCarroEmpresa { get; set; }
+        public DbSet<SaidaCarroEmpresa> SaidasCarrosEmpresa { get; set; }
         public DbSet<EntradaFuncionario> EntradasFuncionarios { get; set; }
 
         public ControleAcessoContext(DbContextOptions options) : base(options)

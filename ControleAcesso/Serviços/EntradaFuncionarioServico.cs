@@ -17,11 +17,11 @@ namespace ControleAcesso.Domain.Serviços
             _pessoaRepositorio = pessoaRepositorio;
         }
 
-        public async Task AlterarStatus(Guid movimentoId, EStatusMovimento status)
+        public async Task AlterarStatusFechado(Guid movimentoId)
         {
             try
             {
-                await _entradaFuncionarioRepositorio.AlterarStatus(movimentoId, status);
+                await _entradaFuncionarioRepositorio.AlterarStatusFechado(movimentoId);
             }
                 catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace ControleAcesso.Domain.Serviços
                 
                 if((pessoa != null) && (veiculo != null))
                 {
-                    EntradaFuncionario movimento = new(movimentoDTO.Sentido, movimentoDTO.StatusMovimento, movimentoDTO.Data, veiculo, pessoa);
+                    EntradaFuncionario movimento = new(movimentoDTO.Data, veiculo, pessoa);
                     retorno = await _entradaFuncionarioRepositorio.Cadastrar(movimento);
                 }
                 

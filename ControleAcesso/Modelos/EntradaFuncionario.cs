@@ -8,7 +8,7 @@
 
         }
         
-       public EntradaFuncionario(ESentido sentido, EStatusMovimento statusMovimento, DateTime dataEntrada, Veiculo veiculo, Pessoa pessoa) : base(sentido, statusMovimento, dataEntrada, veiculo, pessoa)       
+       public EntradaFuncionario(DateTime dataEntrada, Veiculo veiculo, Pessoa pessoa) : base(ESentido.ENTRADA, dataEntrada, veiculo, pessoa)       
         {
             
         }

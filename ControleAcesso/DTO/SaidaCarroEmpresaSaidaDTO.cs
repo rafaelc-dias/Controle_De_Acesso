@@ -5,16 +5,19 @@ namespace ControleAcesso.Domain.DTO
     public class SaidaCarroEmpresaSaidaDTO
     {
         public ESentido Sentido { get; private set; }
-        public ETipoMovimento TipoMovimento { get;  set; }
         public EStatusMovimento StatusMovimento { get;  set; }
-        public string Data { get; set; }
-        public Veiculo Veiculo { get;  set; }
-        public Pessoa Motorista { get;  set; }
-        public string Observacao { get;  set; }
+        public DateTime Data { get; set; }
+        public Guid VeiculoId { get;  set; }
+        public Guid MotoristaId { get;  set; }
         public int KmSaida { get;  set; }
         public int NivelCombustivelSaida { get;  set; }
         public string HoraSaida { get;  set; }
         public string Destino { get;  set; }
+
+        /*public SaidaCarroEmpresa ConverteSaidaCarroEmpresa()
+        {
+            return new SaidaCarroEmpresa(KmSaida, NivelCombustivelSaida, HoraSaida, Destino, Sentido, StatusMovimento, Data)
+        }*/
 
     }
 }
