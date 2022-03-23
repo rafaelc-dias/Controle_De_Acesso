@@ -5,6 +5,7 @@ namespace ControleAcesso.Class
 {
     public class MovimentoPesagem : Movimento
     {
+        public ETipoMovimentoPesagem TipoMovimento { get; private set; }
         public double PesoChegada { get; private set; }
         public double PesoSaida { get; private set; }
         public double TotalPesoNotaFiscal { get; private set; }
@@ -14,9 +15,10 @@ namespace ControleAcesso.Class
         {
         }
 
-        public MovimentoPesagem(double pesoChegada, ESentido sentido , DateTime data, Veiculo veiculo, Pessoa pessoa) : base(sentido,data, veiculo, pessoa)
+        public MovimentoPesagem(double pesoChegada, ETipoMovimentoPesagem tipoMovimento, ESentido sentido , DateTime data, Veiculo veiculo, Pessoa pessoa) : base(sentido,data, veiculo, pessoa)
         {
            PesoChegada = pesoChegada;
+            TipoMovimento = tipoMovimento;
 
         }
 

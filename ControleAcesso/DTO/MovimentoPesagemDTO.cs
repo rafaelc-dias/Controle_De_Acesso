@@ -6,7 +6,7 @@ namespace ControleAcesso.Domain.DTO
     public class MovimentoPesagemDTO
     {
         public ESentido Sentido { get;  set; }
-        public ETipoMovimento TipoMovimento { get;  set; }
+        public ETipoMovimentoPesagem TipoMovimento { get;  set; }
         public EStatusMovimento StatusMovimento { get;  set; }
         public string Data { get;  set; }
         public Veiculo Veiculo { get;  set; }
