@@ -26,6 +26,9 @@ builder.Services.AddScoped<IVeiculoServico, VeiculoServico>();
 builder.Services.AddScoped<IEntradaFuncionarioRepositorio, EntradaFuncionarioRepositorio>();
 builder.Services.AddScoped<IEntradaFuncionarioServico , EntradaFuncionarioServico>();
 
+builder.Services.AddScoped<ISaidaCarroEmpresaRepositorio, SaidaCarroEmpresaRepositorio>();
+builder.Services.AddScoped<ISaidaCarroEmpresaServico, SaidaCarroEmpresaServico>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

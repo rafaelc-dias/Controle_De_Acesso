@@ -4,7 +4,7 @@ using ControleAcesso.Domain.Interfaces;
 
 namespace ControleAcesso.Domain.Serviços
 {
-    internal class SaidaCarroEmpresaServico : ISaidaCarroEmpresaServico
+    public class SaidaCarroEmpresaServico : ISaidaCarroEmpresaServico
     {
         protected ISaidaCarroEmpresaRepositorio _saidaCarroEmpresaRepositorio;
         protected IPessoaRepositorio _pessoaRepositorio;
