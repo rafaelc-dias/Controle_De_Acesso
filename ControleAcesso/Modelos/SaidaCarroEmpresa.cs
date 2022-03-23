@@ -12,9 +12,9 @@ namespace ControleAcesso.Class
         public int NivelCombustivelSaida { get; private set; }
         public string HoraSaida { get; private set; }
         public int KmEntrada { get; private set; }
-        public int NivelCombustivelEntrada { get; private set; }
-        public string HoraEntrada { get; private set; }
-        public string Destino { get; private set; }
+        public int? NivelCombustivelEntrada { get; private set; }
+        public string? HoraEntrada { get; private set; }
+        public string? Destino { get; private set; }
 
         protected SaidaCarroEmpresa()
         {

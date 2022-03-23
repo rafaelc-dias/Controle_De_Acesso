@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleAcesso.Infraestrutura.Migrations
 {
     [DbContext(typeof(ControleAcessoContext))]
-    [Migration("20220321194835_InitialCreate")]
+    [Migration("20220323134003_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,11 +129,9 @@ namespace ControleAcesso.Infraestrutura.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Destino")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HoraEntrada")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HoraSaida")
@@ -146,7 +144,7 @@ namespace ControleAcesso.Infraestrutura.Migrations
                     b.Property<int>("KmSaida")
                         .HasColumnType("int");
 
-                    b.Property<int>("NivelCombustivelEntrada")
+                    b.Property<int?>("NivelCombustivelEntrada")
                         .HasColumnType("int");
 
                     b.Property<int>("NivelCombustivelSaida")

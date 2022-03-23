@@ -21,8 +21,13 @@ namespace ControleAcesso.Infraestrutura.Mappings
         {
             builder.ToTable("SaidasCarrosEmpresa");
             builder.HasKey(c => c.Id);
+            /*builder.Property("HoraEntrada").HasDefaultValue("00:00");
+            builder.Property("KmEntrada").HasDefaultValue("0");
+            builder.Property("NivelCombustivelEntrada").HasDefaultValue("0");*/
+
             
-        }
+
+         }
     }
 
 
