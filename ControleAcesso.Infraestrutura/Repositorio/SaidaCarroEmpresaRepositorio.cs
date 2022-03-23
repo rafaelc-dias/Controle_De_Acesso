@@ -72,9 +72,9 @@ namespace ControleAcesso.Infraestrutura.Repositorio
                 .ToListAsync();
         }
 
-        public async Task<SaidaCarroEmpresa> Pesquisar(Guid MovimentoId)
+        public async Task<SaidaCarroEmpresa> Pesquisar(Guid movimentoId)
         {
-            return await _context.SaidasCarrosEmpresa.FirstOrDefaultAsync(p => p.Id.Equals(MovimentoId));
+            return await _context.SaidasCarrosEmpresa.FirstOrDefaultAsync(p => p.Id.Equals(movimentoId));
         }
     }
 

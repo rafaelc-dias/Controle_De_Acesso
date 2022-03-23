@@ -83,6 +83,9 @@ namespace ControleAcesso.Infraestrutura.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TipoMovimento")
+                        .HasColumnType("int");
+
                     b.Property<double>("TotalPesoNotaFiscal")
                         .HasColumnType("float");
 
@@ -114,7 +117,39 @@ namespace ControleAcesso.Infraestrutura.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoas");
+                    b.ToTable("Pessoas", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f35"),
+                            Documento = "123",
+                            Nome = "Deku"
+                        },
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f36"),
+                            Documento = "654",
+                            Nome = "Bakugo"
+                        },
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f37"),
+                            Documento = "987",
+                            Nome = "Uraraka"
+                        },
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f38"),
+                            Documento = "965",
+                            Nome = "Toshiro"
+                        },
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f39"),
+                            Documento = "458",
+                            Nome = "Ishida"
+                        });
                 });
 
             modelBuilder.Entity("ControleAcesso.Class.SaidaCarroEmpresa", b =>
@@ -185,7 +220,39 @@ namespace ControleAcesso.Infraestrutura.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Veiculos");
+                    b.ToTable("Veiculos", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f30"),
+                            Modelo = "Variant",
+                            Placa = "ABC1234"
+                        },
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f31"),
+                            Modelo = "Fiat 147",
+                            Placa = "ASD5654"
+                        },
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f33"),
+                            Modelo = "Opala",
+                            Placa = "CVB2987"
+                        },
+                        new
+                        {
+                            Id = new Guid("99ec3771-460e-439e-fe6e-08da0cd45f34"),
+                            Modelo = "Chevet",
+                            Placa = "ERT5965"
+                        },
+                        new
+                        {
+                            Id = new Guid("98ec3771-460e-439e-fe6e-08da0cd45f35"),
+                            Modelo = "Gurgel",
+                            Placa = "TYU6458"
+                        });
                 });
 
             modelBuilder.Entity("ControleAcesso.Domain.Modelos.NotaFiscal", b =>

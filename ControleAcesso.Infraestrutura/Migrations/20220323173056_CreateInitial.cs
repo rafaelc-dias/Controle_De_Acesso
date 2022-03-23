@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ControleAcesso.Infraestrutura.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class CreateInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,6 +69,7 @@ namespace ControleAcesso.Infraestrutura.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TipoMovimento = table.Column<int>(type: "int", nullable: false),
                     PesoChegada = table.Column<double>(type: "float", nullable: false),
                     PesoSaida = table.Column<double>(type: "float", nullable: false),
                     TotalPesoNotaFiscal = table.Column<double>(type: "float", nullable: false),
@@ -192,6 +193,30 @@ namespace ControleAcesso.Infraestrutura.Migrations
                         column: x => x.SaidaCarroEmpresaId,
                         principalTable: "SaidasCarrosEmpresa",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Pessoas",
+                columns: new[] { "Id", "Documento", "Nome" },
+                values: new object[,]
+                {
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f35"), "123", "Deku" },
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f36"), "654", "Bakugo" },
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f37"), "987", "Uraraka" },
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f38"), "965", "Toshiro" },
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f39"), "458", "Ishida" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Veiculos",
+                columns: new[] { "Id", "Modelo", "Placa" },
+                values: new object[,]
+                {
+                    { new Guid("98ec3771-460e-439e-fe6e-08da0cd45f35"), "Gurgel", "TYU6458" },
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f30"), "Variant", "ABC1234" },
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f31"), "Fiat 147", "ASD5654" },
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f33"), "Opala", "CVB2987" },
+                    { new Guid("99ec3771-460e-439e-fe6e-08da0cd45f34"), "Chevet", "ERT5965" }
                 });
 
             migrationBuilder.CreateIndex(

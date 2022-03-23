@@ -18,20 +18,20 @@ namespace ControleAcesso.Class
         public MovimentoPesagem(double pesoChegada, ETipoMovimentoPesagem tipoMovimento, ESentido sentido , DateTime data, Veiculo veiculo, Pessoa pessoa) : base(sentido,data, veiculo, pessoa)
         {
            PesoChegada = pesoChegada;
-            TipoMovimento = tipoMovimento;
+           TipoMovimento = tipoMovimento;
 
         }
 
-        public void DefinePesosaida(double pesoSaida)
+        public void DefinirPesoSaida(double pesoSaida)
         {
             PesoSaida = pesoSaida;
         }
 
-        /*public void DefineStatusPesagem()
+        public void DefinirStatusPesagem()
         {
             TotalPesoNotaFiscal = NotasFiscais.Sum(x => x.PesoNotaFiscal);
 
-            if (((TipoMovimento == ETipoMovimento.RECEBIMENTO) && ((PesoChegada - PesoSaida) != TotalPesoNotaFiscal)) || ((TipoMovimento == ETipoMovimento.EXPEDICAO) && ((PesoSaida - PesoChegada) != TotalPesoNotaFiscal)))
+            if (((TipoMovimento == ETipoMovimentoPesagem.RECEBIMENTO) && ((PesoChegada - PesoSaida) != TotalPesoNotaFiscal)) || ((TipoMovimento == ETipoMovimentoPesagem.EXPEDICAO) && ((PesoSaida - PesoChegada) != TotalPesoNotaFiscal)))
             {
                 StatusPesagem = "Pesagem bloqueada !!!";
             }
