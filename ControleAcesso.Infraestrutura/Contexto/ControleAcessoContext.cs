@@ -29,6 +29,10 @@ namespace ControleAcesso.Infraestrutura.Contexto
 
             modelBuilder.ApplyConfiguration(new SaidaCarroEmpresaMap());
 
+            modelBuilder.ApplyConfiguration(new PessoaMap());
+
+            modelBuilder.ApplyConfiguration(new VeiculoMap());
+
             base.OnModelCreating(modelBuilder);
 
            
