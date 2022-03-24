@@ -5,7 +5,7 @@ namespace ControleAcesso.Domain.Interfaces
 {
     public interface IEntradaFuncionarioServico
     {
-        Task<int> Cadastrar(EntradaFuncionarioDTO movimento);
+        Task<int> Cadastrar(EntradaFuncionarioDTO movimentoDTO);
         Task AlterarStatusFechado(Guid movimentoId);
         Task AdicionaDataSaida(Guid movimentoId);
         Task<List<EntradaFuncionario>> Listar();

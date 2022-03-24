@@ -1,7 +1,4 @@
-﻿using ControleAcesso.Class;
-using ControleAcesso.Domain.Modelos;
-
-namespace ControleAcesso.Domain.DTO
+﻿namespace ControleAcesso.Domain.DTO
 {
     public class MovimentoPesagemPesoSaidaDTO
     {
