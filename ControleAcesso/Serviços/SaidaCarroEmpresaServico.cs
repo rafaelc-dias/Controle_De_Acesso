@@ -102,9 +102,6 @@ namespace ControleAcesso.Domain.Serviços
             }
         }
 
-        public Task InserirEntrada(SaidaCarroEmpresaSaidaDTO movimento)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

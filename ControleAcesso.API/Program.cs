@@ -24,10 +24,13 @@ builder.Services.AddScoped<IVeiculoRepositorio, VeiculoRepositorio>();
 builder.Services.AddScoped<IVeiculoServico, VeiculoServico>();
 
 builder.Services.AddScoped<IEntradaFuncionarioRepositorio, EntradaFuncionarioRepositorio>();
-builder.Services.AddScoped<IEntradaFuncionarioServico , EntradaFuncionarioServico>();
+builder.Services.AddScoped<IEntradaFuncionarioServico, EntradaFuncionarioServico>();
 
 builder.Services.AddScoped<ISaidaCarroEmpresaRepositorio, SaidaCarroEmpresaRepositorio>();
 builder.Services.AddScoped<ISaidaCarroEmpresaServico, SaidaCarroEmpresaServico>();
+
+builder.Services.AddScoped<IMovimentoPesagemRepositorio, MovimentoPesagemRepositorio>();
+builder.Services.AddScoped<IMovimentoPesagemServico, MovimentoPesagemServico>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

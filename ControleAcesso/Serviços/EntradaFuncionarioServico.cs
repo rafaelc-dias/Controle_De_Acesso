@@ -103,5 +103,7 @@ namespace ControleAcesso.Domain.Serviços
                 throw ex;
             }
         }
+
+        
     }
 }
