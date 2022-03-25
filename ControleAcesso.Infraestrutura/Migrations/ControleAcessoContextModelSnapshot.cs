@@ -80,7 +80,6 @@ namespace ControleAcesso.Infraestrutura.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("StatusPesagem")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TipoMovimento")

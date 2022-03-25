@@ -4,7 +4,7 @@ namespace ControleAcesso.Domain.Interfaces
 {
     public interface IVeiculoRepositorio
     {
-        Task Cadastrar(Veiculo veiculo);
+        Task<Veiculo> Cadastrar(Veiculo veiculo);
         Task Atualizar(Veiculo veiculo);
         Task<List<Veiculo>> Listar();
         Task Excluir(Guid veiculoId);

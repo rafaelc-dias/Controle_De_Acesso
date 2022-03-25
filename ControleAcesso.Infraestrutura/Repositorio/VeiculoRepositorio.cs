@@ -25,11 +25,14 @@ namespace ControleAcesso.Infraestrutura.Repositorio
             }
         }
 
-        public async Task Cadastrar(Veiculo veiculo)
+        public async Task<Veiculo> Cadastrar(Veiculo veiculo)
         {
-            if (veiculo != null)
-                await _context.Veiculos.AddAsync(veiculo);
-                await _context.SaveChangesAsync();
+            
+            var resposta = await _context.Veiculos.AddAsync(veiculo);
+            await _context.SaveChangesAsync();
+
+
+            return resposta.Entity;
         }
 
         public async Task Excluir(Guid veiculoId)

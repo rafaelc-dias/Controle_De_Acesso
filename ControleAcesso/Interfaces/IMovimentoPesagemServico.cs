@@ -7,8 +7,7 @@ namespace ControleAcesso.Domain.Interfaces
     {
         Task AlterarStatusFechado(Guid movimentoId);
         //Task InserirEntrada(Guid movimentoId, int kmEntrada, int nivelCombustivelEntrada, string horaEntrada);
-        Task<int> CadastrarExpedicao(MovimentoPesagemDTO movimentoDTO);
-        Task<int> CadastrarRecebimento(MovimentoPesagemDTO movimentoDTO);
+        Task<int> Cadastrar(MovimentoPesagemDTO movimentoDTO);        
         Task Excluir(Guid movimentoId);
         Task<List<MovimentoPesagem>> Listar();
         Task<MovimentoPesagem> Pesquisar(Guid MovimentoId);

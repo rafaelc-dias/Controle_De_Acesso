@@ -9,7 +9,7 @@ namespace ControleAcesso.Class
         public double PesoChegada { get; private set; }
         public double PesoSaida { get; private set; }
         public double TotalPesoNotaFiscal { get; private set; }
-        public string StatusPesagem { get; private set; }
+        public string? StatusPesagem { get; private set; }
 
         protected MovimentoPesagem()
         {

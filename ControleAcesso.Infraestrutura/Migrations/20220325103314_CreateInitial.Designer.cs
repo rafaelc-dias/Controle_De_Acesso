@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleAcesso.Infraestrutura.Migrations
 {
     [DbContext(typeof(ControleAcessoContext))]
-    [Migration("20220323173056_CreateInitial")]
+    [Migration("20220325103314_CreateInitial")]
     partial class CreateInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,7 +82,6 @@ namespace ControleAcesso.Infraestrutura.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("StatusPesagem")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TipoMovimento")

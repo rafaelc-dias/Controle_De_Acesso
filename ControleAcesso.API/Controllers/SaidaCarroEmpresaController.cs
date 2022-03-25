@@ -58,7 +58,7 @@ namespace ControleAcesso.API.Controllers
         }
 
         [HttpPut]
-        [Route("alterarstatus/{movimentoId}")]
+        [Route("alterarstatusfechado/{movimentoId}")]
         public async Task<IActionResult> AlterarStatusfechado(Guid movimentoId)
         {
             try

@@ -73,7 +73,7 @@ namespace ControleAcesso.Infraestrutura.Migrations
                     PesoChegada = table.Column<double>(type: "float", nullable: false),
                     PesoSaida = table.Column<double>(type: "float", nullable: false),
                     TotalPesoNotaFiscal = table.Column<double>(type: "float", nullable: false),
-                    StatusPesagem = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StatusPesagem = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Sentido = table.Column<int>(type: "int", nullable: false),
                     StatusMovimento = table.Column<int>(type: "int", nullable: false),
                     Data = table.Column<DateTime>(type: "datetime2", nullable: false),

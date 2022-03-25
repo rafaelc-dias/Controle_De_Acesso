@@ -25,4 +25,8 @@
     <ProjectReference Include="..\ControleAcesso\ControleAcesso.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
