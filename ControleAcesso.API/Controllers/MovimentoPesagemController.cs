@@ -1,5 +1,6 @@
 ﻿using ControleAcesso.Class;
 using ControleAcesso.Domain.DTO;
+using ControleAcesso.Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,92 +10,119 @@ namespace ControleAcesso.API.Controllers
     [ApiController]
     public class MovimentoPesagemController : ControllerBase
     {
-        private static List<MovimentoPesagem> lMovimentosPesagem = new();
+        private readonly IMovimentoPesagemServico _movimentoPesagemServico;
 
-        /*[HttpPost("AdiconarMovimentosPesagem")]
-        public async Task<IActionResult> AdiconarMovimentosPesagem(MovimentoPesagemDTO movimentosPesagemDTO)
+        public MovimentoPesagemController(IMovimentoPesagemServico movimentoPesagemServico)
         {
-            var MovimentosPesagem = new MovimentoPesagem(movimentosPesagemDTO.PesoChegada, movimentosPesagemDTO.Sentido, movimentosPesagemDTO.TipoMovimento, movimentosPesagemDTO.StatusMovimento,
-                                                            movimentosPesagemDTO.Data, movimentosPesagemDTO.Veiculo, movimentosPesagemDTO.Motorista);
-            var id = MovimentosPesagem.Id;
-            lMovimentosPesagem.Add(MovimentosPesagem);
-            return Ok($"Foi inserida Movimento com Pesagem de ID {id} ");
+            _movimentoPesagemServico = movimentoPesagemServico;
         }
 
-        /*[HttpPut("AdiconarMovimentosPesagemPesosaida")]
-        public async Task<IActionResult> AdiconarMovimentosPesagemPesosaida(MovimentoPesagemPesoSaidaDTO movimentosPesagemPesoSaidaDTO)
+        [HttpPost]
+        [Route("cadastrar")]
+        public async Task<IActionResult> cadastrarexpedicao(MovimentoPesagemDTO movimento)
         {
-            var movimentosPesagem = lMovimentosPesagem.Find(MovimentoPesagemResultado => MovimentoPesagemResultado.Id == movimentosPesagemPesoSaidaDTO.ID);
+            try
+            {
+                if (await _movimentoPesagemServico.Cadastrar(movimento) > 0)
+                {
+                    return Ok("Cadastrado !!!!");
+                }
+                else
+                {
+                    return NoContent();
+                }
 
-            if (movimentosPesagem == null)
-                return BadRequest("Movimento Pesagem não encontrado");
 
-            movimentosPesagem.DefinePesosaida(movimentosPesagemPesoSaidaDTO.PesoSaida);
-
-            movimentosPesagem.DefineStatusPesagem();
-
-            return Ok($"Peso de saida adicionado ao movimento de ID {movimentosPesagemPesoSaidaDTO.ID} !!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        /*[HttpPut("AdiconarNotaFiscalMovimentosPesagem")]
-        public async Task<IActionResult> AdiconarNotaFiscalMovimentosPesagem(NotaFiscalDTO notasFiscaisDTO)
+        [HttpGet]
+        [Route("listar")]
+        public async Task<IActionResult> listar()
         {
-            var movimentosPesagem = lMovimentosPesagem.Find(MovimentoPesagemResultado => MovimentoPesagemResultado.Id == notasFiscaisDTO.IdMovimento);
+            try
+            {
 
-            if (movimentosPesagem == null)
-                return BadRequest("Movimento Pesagem não encontrado");
+                var _response = await _movimentoPesagemServico.Listar();
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-            //movimentosPesagem.IncluiNotaFiscalPesagem(notasFiscaisDTO);
-
-            movimentosPesagem.DefineStatusPesagem();
-
-
-            return Ok($"Nota Fiscal inseriada do movimento de ID {movimentosPesagem.Id}, alterado !!!");
-        }*/
-
-        [HttpPut("AlterarObservacaoMovimento")]
-        public async Task<IActionResult> AlterarObservacaoMovimento(MovimentoObservacaoDTO movimentoObservacaoDTO)
+        [HttpPut]
+        [Route("alterarstatusfechado/{movimentoId}")]
+        public async Task<IActionResult> AlterarStatusfechado(Guid movimentoId)
         {
-            var movimento = lMovimentosPesagem.Find(movimentoResultado => movimentoResultado.Id == movimentoObservacaoDTO.Id);
-
-            if (movimento == null)
-                return BadRequest("Movimento não encontrado");
-
-            //movimento.AlterarObservacao(movimentoObservacaoDTO.Observacao);
-            return Ok($"Observação do movimento de ID {movimentoObservacaoDTO.Id}, alterado !!!");
+            try
+            {
+                await _movimentoPesagemServico.AlterarStatusFechado(movimentoId);
+                return Ok("Atualizado !!!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
         }
 
-        /*[HttpGet("RetonarRecebimentos")]
-        public async Task<IActionResult> RetonarRecebimentos()
+        [HttpPut]
+        [Route("definirpesosaida")]
+        public async Task<IActionResult> DefinirPesoSaida(MovimentoPesagemPesoSaidaDTO movimento)
         {
-            return Ok(lMovimentosPesagem.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.TipoMovimento == ETipoMovimento.RECEBIMENTO));
+            try
+            {
+                await _movimentoPesagemServico.DefinirPesoSaida(movimento);
+                return Ok("Atualizado !!!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
-        [HttpGet("RetonarExpedicoes")]
-        public async Task<IActionResult> RetonarExpedicoes()
+        [HttpPut]
+        [Route("definirstatuspesagem")]
+        public async Task<IActionResult> DefinirStatusPesagem(Guid movimentoId)
         {
-            return Ok(lMovimentosPesagem.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.TipoMovimento == ETipoMovimento.EXPEDICAO));
+            try
+            {
+                await _movimentoPesagemServico.DefinirStatusPesagem(movimentoId);
+                return Ok("Atualizado !!!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
-        [HttpGet("RetonarMovimentosAbertos")]
-        public async Task<IActionResult> RetonarMovimentosAbertos()
+        [HttpDelete]
+        [Route("excluir/{id}")]
+        public async Task<IActionResult> RemoverSaidaCarroEmpresa(Guid id)
         {
-            return Ok(lMovimentosPesagem.FindAll(RetornoMovimentosAbertos => RetornoMovimentosAbertos.StatusMovimento == EStatusMovimento.ABERTO));
-        }*/
-
-        [HttpGet("RetonarMovimentosPorId{id}")]
-        public async Task<IActionResult> RetonarMovimentosPorId(string id)
-        {
-            return Ok(lMovimentosPesagem.FindAll(RetornoMovimentosAbertos => RetornoMovimentosAbertos.Id.ToString() == id));
-        }
-
-        [HttpPost("RetonarMovimentosPorSentidoTipoStatus")]
-        public async Task<IActionResult> RetonarMovimentosPorSentidoTipoStatus(FiltroMovimentoDTO filtroMovimentoDTO)
-        {
-            return Ok(lMovimentosPesagem.FindAll(RetornoSaidaCarroEmpresa => RetornoSaidaCarroEmpresa.Sentido == filtroMovimentoDTO.Sentido && RetornoSaidaCarroEmpresa.StatusMovimento == filtroMovimentoDTO.StatusMovimento));
+            try
+            {
+                await _movimentoPesagemServico.Excluir(id);
+                return Ok("Exclusão");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
 
         }
+
+
+
+
     }
 }

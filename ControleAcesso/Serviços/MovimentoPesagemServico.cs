@@ -30,7 +30,7 @@ namespace ControleAcesso.Domain.Serviços
             }
         }
 
-        public async Task<int> CadastrarExpedicao(MovimentoPesagemDTO movimentoDTO)
+        public async Task<int> Cadastrar(MovimentoPesagemDTO movimentoDTO)
         {
             int retorno = 0;
 
@@ -41,32 +41,7 @@ namespace ControleAcesso.Domain.Serviços
 
                 if ((pessoa != null) && (veiculo != null))
                 {
-                    MovimentoPesagem movimento = new(movimentoDTO.PesoChegada,ETipoMovimentoPesagem.EXPEDICAO,ESentido.ENTRADA, movimentoDTO.Data, veiculo, pessoa);
-                    retorno = await _movimentoPesagemRepositorio.Cadastrar(movimento);
-                }
-
-                return retorno;
-
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<int> CadastrarRecebimento(MovimentoPesagemDTO movimentoDTO)
-        {
-            int retorno = 0;
-
-            try
-            {
-                var pessoa = await _pessoaRepositorio.Pesquisar(movimentoDTO.PessoaId);
-                var veiculo = await _veiculoRepositorio.Pesquisar(movimentoDTO.VeiculoId);
-
-                if ((pessoa != null) && (veiculo != null))
-                {
-                    MovimentoPesagem movimento = new(movimentoDTO.PesoChegada, ETipoMovimentoPesagem.RECEBIMENTO, ESentido.ENTRADA, movimentoDTO.Data, veiculo, pessoa);
+                    MovimentoPesagem movimento = new(movimentoDTO.PesoChegada, movimentoDTO.TipoMovimento, ESentido.ENTRADA, movimentoDTO.Data, veiculo, pessoa);
                     retorno = await _movimentoPesagemRepositorio.Cadastrar(movimento);
                 }
 
