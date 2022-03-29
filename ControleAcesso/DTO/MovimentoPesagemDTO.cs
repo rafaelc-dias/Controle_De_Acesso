@@ -12,6 +12,8 @@ namespace ControleAcesso.Domain.DTO
         public double TotalPesoNotaFiscal { get;  set; }
         public Guid VeiculoId { get; set; }
         public Guid PessoaId { get; set; }
+        public List<ObservacaoMovimentoPesagemDTO> Observacoes { get; set; } = new();
+        
 
     }
 }

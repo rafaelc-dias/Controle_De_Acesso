@@ -32,6 +32,9 @@ builder.Services.AddScoped<ISaidaCarroEmpresaServico, SaidaCarroEmpresaServico>(
 builder.Services.AddScoped<IMovimentoPesagemRepositorio, MovimentoPesagemRepositorio>();
 builder.Services.AddScoped<IMovimentoPesagemServico, MovimentoPesagemServico>();
 
+builder.Services.AddScoped<IObservacaoRepositorio, ObservacaoRepositorio>();
+//builder.Services.AddScoped<IObservacaoSerivco, ObservacaoServico>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

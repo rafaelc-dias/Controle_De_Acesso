@@ -298,9 +298,6 @@ namespace ControleAcesso.Infraestrutura.Migrations
                     b.Property<Guid?>("EntradaFuncionarioId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdMovimento")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid?>("MovimentoPesagemId")
                         .HasColumnType("uniqueidentifier");
 

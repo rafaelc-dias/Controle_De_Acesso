@@ -13,13 +13,16 @@ namespace ControleAcesso.Domain.Serviços
         }
         public async Task Atualizar(Pessoa pessoas)
         {
-            try
+            if (pessoas != null)
             {
-                await _pessoasRepositorio.Atualizar(pessoas);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                try
+                {
+                    await _pessoasRepositorio.Atualizar(pessoas);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 

@@ -69,7 +69,27 @@ namespace ControleAcesso.Infraestrutura.Repositorio
             }
             return retorno;
         }
-    
+
+        public async Task<int> Atualizar(MovimentoPesagem movimento)
+        {
+            int retorno = 0;
+
+            try
+            {
+
+                if (movimento != null)
+                {
+                    _context.MovimentosPesagem.Update(movimento);
+                    //retorno = await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return retorno;
+        }
+
 
         public async Task Excluir(Guid movimentoId)
         {
@@ -90,12 +110,17 @@ namespace ControleAcesso.Infraestrutura.Repositorio
             return await _context.MovimentosPesagem
                 .Include(veiculo => veiculo.Veiculo)
                 .Include(pessoa => pessoa.Pessoa)
+                .Include(observacoes => observacoes.Observacoes)
                 .ToListAsync();
         }
 
         public async Task<MovimentoPesagem> Pesquisar(Guid movimentoId)
         {
-            return await _context.MovimentosPesagem.FirstOrDefaultAsync(p => p.Id.Equals(movimentoId));
+            return await _context.MovimentosPesagem
+                .Include(veiculo => veiculo.Veiculo)
+                .Include(pessoa => pessoa.Pessoa)
+                .Include(observacoes => observacoes.Observacoes)
+                .FirstOrDefaultAsync(p => p.Id.Equals(movimentoId));
         }
     }
 }

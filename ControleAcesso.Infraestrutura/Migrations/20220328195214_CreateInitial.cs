@@ -169,7 +169,6 @@ namespace ControleAcesso.Infraestrutura.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdMovimento = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Obs = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EntradaFuncionarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     MovimentoPesagemId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
