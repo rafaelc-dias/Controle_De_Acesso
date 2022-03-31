@@ -89,6 +89,22 @@ namespace ControleAcesso.API.Controllers
 
         }
 
+        [HttpPut]
+        [Route("inserirobservacao")]
+        public async Task<IActionResult> InserirObservacao(ObservacaosaidaCarroEmpresaDTO observacaoDTO)
+        {
+            try
+            {
+                await _saidaCarroEmpresaServico.InsereObservacao(observacaoDTO);
+                return Ok("Atualizado !!!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         [HttpDelete]
         [Route("excluir/{id}")]
         public async Task<IActionResult> RemoverSaidaCarroEmpresa(Guid id)

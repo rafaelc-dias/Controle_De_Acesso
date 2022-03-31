@@ -105,7 +105,7 @@ namespace ControleAcesso.API.Controllers
         }
 
         [HttpPut]
-        [Route("Inserirabservacao")]
+        [Route("inserirobservacao")]
         public async Task<IActionResult> InserirObservacao(ObservacaoMovimentoPesagemDTO observacaoDTO)
         {
             try

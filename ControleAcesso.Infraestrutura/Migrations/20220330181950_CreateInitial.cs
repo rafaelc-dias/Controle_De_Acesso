@@ -169,10 +169,10 @@ namespace ControleAcesso.Infraestrutura.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Obs = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EntradaFuncionarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     MovimentoPesagemId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    SaidaCarroEmpresaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    SaidaCarroEmpresaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Obs = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

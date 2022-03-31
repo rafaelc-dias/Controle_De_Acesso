@@ -69,6 +69,7 @@ namespace ControleAcesso.Infraestrutura.Repositorio
             return await _context.SaidasCarrosEmpresa
                 .Include(veiculo => veiculo.Veiculo)
                 .Include(pessoa => pessoa.Pessoa)
+                .Include(observacoes => observacoes.Observacoes)
                 .ToListAsync();
         }
 

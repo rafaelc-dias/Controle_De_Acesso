@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleAcesso.Infraestrutura.Migrations
 {
     [DbContext(typeof(ControleAcessoContext))]
-    [Migration("20220328195214_CreateInitial")]
+    [Migration("20220330181950_CreateInitial")]
     partial class CreateInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
