@@ -1,6 +1,7 @@
 ﻿using ControleAcesso.Class;
 using ControleAcesso.Domain.DTO;
 using ControleAcesso.Domain.Interfaces;
+using ControleAcesso.Domain.Modelos;
 
 namespace ControleAcesso.Domain.Serviços
 {
@@ -9,12 +10,14 @@ namespace ControleAcesso.Domain.Serviços
         protected IMovimentoPesagemRepositorio _movimentoPesagemRepositorio;
         protected IPessoaRepositorio _pessoaRepositorio;
         protected IVeiculoRepositorio _veiculoRepositorio;
+        protected IObservacaoRepositorio _observacaoRepositorio;
 
-        public MovimentoPesagemServico(IMovimentoPesagemRepositorio movimentoPesagemRepositorio, IPessoaRepositorio pessoaRepositorio, IVeiculoRepositorio veiculoRepositorio)
+        public MovimentoPesagemServico(IMovimentoPesagemRepositorio movimentoPesagemRepositorio, IPessoaRepositorio pessoaRepositorio, IVeiculoRepositorio veiculoRepositorio, IObservacaoRepositorio observacaoRepositorio)
         {
-            _movimentoPesagemRepositorio =  movimentoPesagemRepositorio;
+            _movimentoPesagemRepositorio = movimentoPesagemRepositorio;
             _veiculoRepositorio = veiculoRepositorio;
             _pessoaRepositorio = pessoaRepositorio;
+            _observacaoRepositorio = observacaoRepositorio; 
 
         }
 
@@ -23,6 +26,21 @@ namespace ControleAcesso.Domain.Serviços
             try
             {
                 await _movimentoPesagemRepositorio.AlterarStatusFechado(movimentoId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task InsereObservacao(ObservacaoMovimentoPesagemDTO observacaoDTO)
+        {
+            try
+            {
+                var _novaobservacao = observacaoDTO.ConverteObservacao();
+
+                await _observacaoRepositorio.Cadastrar(_novaobservacao);
+                
             }
             catch (Exception ex)
             {
@@ -39,9 +57,17 @@ namespace ControleAcesso.Domain.Serviços
                 var pessoa = await _pessoaRepositorio.Pesquisar(movimentoDTO.PessoaId);
                 var veiculo = await _veiculoRepositorio.Pesquisar(movimentoDTO.VeiculoId);
 
+
+
                 if ((pessoa != null) && (veiculo != null))
                 {
                     MovimentoPesagem movimento = new(movimentoDTO.PesoChegada, movimentoDTO.TipoMovimento, ESentido.ENTRADA, movimentoDTO.Data, veiculo, pessoa);
+
+                    if (movimentoDTO.Observacoes != null)
+                    {
+                        movimentoDTO.Observacoes.ForEach(observacoes => movimento.IncluirObservacao(observacoes.ConverteObservacao()));
+                    }
+
                     retorno = await _movimentoPesagemRepositorio.Cadastrar(movimento);
                 }
 

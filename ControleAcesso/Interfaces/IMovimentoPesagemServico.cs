@@ -13,5 +13,6 @@ namespace ControleAcesso.Domain.Interfaces
         Task<MovimentoPesagem> Pesquisar(Guid MovimentoId);
         Task DefinirPesoSaida(MovimentoPesagemPesoSaidaDTO movimentoPesagemPesoSaidaDTO);
         Task DefinirStatusPesagem(Guid movimentoId);
+        Task InsereObservacao(ObservacaoMovimentoPesagemDTO observacaoDTO);
     }
 }

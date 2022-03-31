@@ -11,5 +11,6 @@ namespace ControleAcesso.Domain.Interfaces
         Task Excluir(Guid movimentoId);
         Task<List<SaidaCarroEmpresa>> Listar();
         Task<SaidaCarroEmpresa> Pesquisar(Guid MovimentoId);
+        Task InsereObservacao(ObservacaosaidaCarroEmpresaDTO observacaoDTO);
     }
 }

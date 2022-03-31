@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleAcesso.Infraestrutura.Migrations
 {
     [DbContext(typeof(ControleAcessoContext))]
-    [Migration("20220325103314_CreateInitial")]
+    [Migration("20220330181950_CreateInitial")]
     partial class CreateInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -298,9 +298,6 @@ namespace ControleAcesso.Infraestrutura.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("EntradaFuncionarioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("IdMovimento")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("MovimentoPesagemId")

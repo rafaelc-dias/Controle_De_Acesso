@@ -11,5 +11,6 @@ namespace ControleAcesso.Domain.Interfaces
         Task<List<EntradaFuncionario>> Listar();
         Task Excluir(Guid EntradaFuncionarioId);
         Task<EntradaFuncionario> Pesquisar(Guid EntradaFuncionarioId);
+        Task InsereObservacao(ObservacaoEntradaFuncionarioDTO observacaoDTO);
     }
 }

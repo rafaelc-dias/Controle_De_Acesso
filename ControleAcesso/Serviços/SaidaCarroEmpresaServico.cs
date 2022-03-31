@@ -9,12 +9,14 @@ namespace ControleAcesso.Domain.Serviços
         protected ISaidaCarroEmpresaRepositorio _saidaCarroEmpresaRepositorio;
         protected IPessoaRepositorio _pessoaRepositorio;
         protected IVeiculoRepositorio _veiculoRepositorio;
+        protected IObservacaoRepositorio _observacaoRepositorio;
 
-        public SaidaCarroEmpresaServico(ISaidaCarroEmpresaRepositorio saidaCarroEmpresaRepositorio, IPessoaRepositorio pessoaRepositorio, IVeiculoRepositorio veiculoRepositorio)
+        public SaidaCarroEmpresaServico(ISaidaCarroEmpresaRepositorio saidaCarroEmpresaRepositorio, IPessoaRepositorio pessoaRepositorio, IVeiculoRepositorio veiculoRepositorio, IObservacaoRepositorio observacaoRepositorio)
         {
             _saidaCarroEmpresaRepositorio = saidaCarroEmpresaRepositorio;
             _veiculoRepositorio = veiculoRepositorio;
             _pessoaRepositorio = pessoaRepositorio;
+            _observacaoRepositorio = observacaoRepositorio;
         }
 
 
@@ -47,6 +49,20 @@ namespace ControleAcesso.Domain.Serviços
 
                 return retorno;
 
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task InsereObservacao(ObservacaosaidaCarroEmpresaDTO observacaoDTO)
+        {
+            try
+            {
+                var _novaobservacao = observacaoDTO.ConverteObservacao();
+
+                await _observacaoRepositorio.Cadastrar(_novaobservacao);
 
             }
             catch (Exception ex)

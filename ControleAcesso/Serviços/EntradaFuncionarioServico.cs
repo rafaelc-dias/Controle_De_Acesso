@@ -9,12 +9,14 @@ namespace ControleAcesso.Domain.Serviços
         protected IEntradaFuncionarioRepositorio _entradaFuncionarioRepositorio;
         protected IPessoaRepositorio _pessoaRepositorio;
         protected IVeiculoRepositorio _veiculoRepositorio;
+        protected IObservacaoRepositorio _observacaoRepositorio;
 
-        public EntradaFuncionarioServico(IEntradaFuncionarioRepositorio entradaFuncionarioRepositorio, IPessoaRepositorio pessoaRepositorio, IVeiculoRepositorio veiculoRepositorio)
+        public EntradaFuncionarioServico(IEntradaFuncionarioRepositorio entradaFuncionarioRepositorio, IPessoaRepositorio pessoaRepositorio, IVeiculoRepositorio veiculoRepositorio, IObservacaoRepositorio observacaoRepositorio)
         {
             _entradaFuncionarioRepositorio = entradaFuncionarioRepositorio;
             _veiculoRepositorio = veiculoRepositorio;
             _pessoaRepositorio = pessoaRepositorio;
+            _observacaoRepositorio = observacaoRepositorio;
         }
 
         public async Task AlterarStatusFechado(Guid movimentoId)
@@ -41,6 +43,21 @@ namespace ControleAcesso.Domain.Serviços
                 throw ex;
             }
 
+        }
+
+        public async Task InsereObservacao(ObservacaoEntradaFuncionarioDTO observacaoDTO)
+        {
+            try
+            {
+                var _novaobservacao = observacaoDTO.ConverteObservacao();
+
+                await _observacaoRepositorio.Cadastrar(_novaobservacao);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<int> Cadastrar(EntradaFuncionarioDTO movimentoDTO)
